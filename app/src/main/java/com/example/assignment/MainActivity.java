@@ -2,6 +2,7 @@ package com.example.assignment;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,7 +37,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        /*//set font
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/avenir.ttf");
+        TextView tv = (TextView) findViewById(R.id.splash_title);
+        tv.setTypeface(tf);
+        */
 
         factory.Init();
         factory.inputValue(totalMoney,totalPollution,market.getUnitPrice());

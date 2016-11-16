@@ -8,4 +8,10 @@
     <string name="TotalMoney">TotalMoney: </string>
     <string name="Temperature">27°C</string>
     <string name="backMenu">Go back</string>
+
+    <string name="splash_imgview">Smart Cities App logo</string>
+    <string name="splash_title">Smart Cities - </string>
+    <string name="splash_heading">Smart</string>
+    <string name="splash_cityname">Hong Kong</string>
+
 </resources>
