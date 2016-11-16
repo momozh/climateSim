@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.assignment.A_Market">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Buy GHG"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sold GHG"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="109dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Production Price: 30"
+        android:id="@+id/i_m_unitPrice"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="120dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backMenu"
+        android:id="@+id/button2"
+        android:onClick="onBack"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        android:id="@+id/i_but_buyGHG"
+        android:onClick="onBuy"
+        android:layout_below="@+id/seekBar_buyGHG"
+        android:layout_alignStart="@+id/i_but_SellGHG" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELL"
+        android:id="@+id/i_but_SellGHG"
+        android:onClick="onSell"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="33dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost: 0 \nUsable GHG place: 0"
+        android:id="@+id/i_m_ghgCost"
+        android:layout_below="@+id/seekBar_buyGHG"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp" />
+
+    <SeekBar
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar_buyGHG"
+        android:max="2000"
+        android:progress="0"
+        android:onClick="onBack"
+        android:indeterminate="false"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Pollution: 0 \n Money income: 0"
+        android:id="@+id/i_m_pollutionAdd"
+        android:layout_below="@+id/seekBar_SellGHG"
+        android:layout_alignStart="@+id/i_m_ghgCost" />
+
+    <SeekBar
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar_SellGHG"
+        android:max="2000"
+        android:progress="0"
+        android:onClick="onBack"
+        android:indeterminate="false"
+        android:layout_alignTop="@+id/i_but_SellGHG"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

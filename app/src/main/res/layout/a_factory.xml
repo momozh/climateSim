@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.assignment.A_Factory">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Factory"
+        android:id="@+id/title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:layout_alignEnd="@+id/i_toMenu"
+        android:id="@+id/linearLayout"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UP1"
+            android:id="@+id/i_up1"
+            android:layout_marginLeft="30dp" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar1"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="0.27"
+            android:max="5"
+            android:progress="1"
+            android:indeterminate="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lv. UP"
+            android:id="@+id/i_buLvUp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toStartOf="@+id/i_maxUnit"
+            android:layout_marginLeft="50dp"
+            android:onClick="onLevelUp1" />
+
+    </LinearLayout>
+
+    <SeekBar
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/i_unitBar"
+        android:layout_marginBottom="107dp"
+        android:max = "100"
+        android:progress="5"
+        android:onClick="onBack"
+        android:indeterminate="false"
+        android:layout_above="@+id/i_toMenu"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backMenu"
+        android:id="@+id/i_toMenu"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onBack" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current: 5"
+        android:id="@+id/i_curUnit"
+        android:layout_above="@+id/i_unitBar"
+        android:layout_alignStart="@+id/i_unitBar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MaxUnit"
+        android:id="@+id/i_maxUnit"
+        android:layout_alignTop="@+id/i_unitBar"
+        android:layout_toEndOf="@+id/i_unitBar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost:"
+        android:id="@+id/i_f_cost"
+        android:layout_below="@+id/i_maxUnit"
+        android:layout_alignStart="@+id/i_unitBar"
+        android:singleLine="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost: "
+        android:id="@+id/i_up1_cost"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignEnd="@+id/i_curUnit" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:weightSum="1"
+        android:layout_below="@+id/i_up1_cost"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UP2"
+            android:id="@+id/i_up2"
+            android:layout_marginLeft="30dp" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar2"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="0.27"
+            android:max="5"
+            android:progress="1"
+            android:indeterminate="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lv. UP"
+            android:id="@+id/i_buLvUp2"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toStartOf="@+id/i_maxUnit"
+            android:layout_marginLeft="50dp"
+            android:onClick="onLevelUp2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:weightSum="1"
+        android:layout_below="@+id/i_up1_cost2"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/linearLayout2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UP2"
+            android:id="@+id/textView"
+            android:layout_marginLeft="30dp" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar3"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="0.27"
+            android:max="5"
+            android:progress="1"
+            android:indeterminate="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lv. UP"
+            android:id="@+id/button"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toStartOf="@+id/i_maxUnit"
+            android:layout_marginLeft="50dp"
+            android:onClick="onLevelUp3" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost: "
+        android:id="@+id/i_up1_cost2"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignStart="@+id/i_up1_cost" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost: "
+        android:id="@+id/i_up1_cost3"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_alignEnd="@+id/i_curUnit" />
+
+</RelativeLayout>

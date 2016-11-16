@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Smart Cities</string>
+    <string name="button_factory">Factory</string>
+    <string name="button_government">Government</string>
+    <string name="button_Market">Market</string>
+    <string name="button_NextTurn">NextTurn</string>
+    <string name="inTurn">Turn: </string>
+    <string name="TotalMoney">TotalMoney: </string>
+    <string name="Temperature">27°C</string>
+    <string name="backMenu">Go back</string>
+</resources>

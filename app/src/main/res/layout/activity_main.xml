@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.assignment.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TotalMoney"
+        android:id="@+id/i_TotalMoney"
+        android:layout_marginTop="53dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/i_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Temperature"
+        android:id="@+id/i_Temperatur"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_factory"
+        android:id="@+id/i_button"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/i_Temperatur"
+        android:layout_toStartOf="@+id/i_government"
+        android:onClick="onFactory" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_government"
+        android:id="@+id/i_government"
+        android:layout_marginBottom="50dp"
+        android:layout_above="@+id/i_Temperatur"
+        android:layout_centerHorizontal="true"
+        android:onClick="onGovernment" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_Market"
+        android:id="@+id/i_market"
+        android:layout_alignTop="@+id/i_button"
+        android:layout_toEndOf="@+id/i_government"
+        android:onClick="onMarket" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inTurn"
+        android:id="@+id/i_Satisfaction"
+        android:layout_alignTop="@+id/i_TotalMoney"
+        android:layout_alignEnd="@+id/i_market" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_NextTurn"
+        android:id="@+id/i_nextTurn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onNextTurn" />
+</RelativeLayout>
