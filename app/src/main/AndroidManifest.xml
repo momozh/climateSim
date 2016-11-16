@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.assignment">
+    package="com.example.climateSim">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.climateSim.MainActivity"
             android:screenOrientation="userLandscape">
 
             <intent-filter>
@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".A_Factory" />
-        <activity android:name=".A_Government" />
-        <activity android:name=".A_Market"></activity>
+        <activity android:name="com.example.climateSim.A_Factory" />
+        <activity android:name="com.example.climateSim.A_Government" />
+        <activity android:name="com.example.climateSim.A_Market"></activity>
     </application>
 
 </manifest>
