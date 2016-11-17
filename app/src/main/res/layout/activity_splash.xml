@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_splash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient">
+
+    <ImageView
+        app:srcCompat="@drawable/splashscreen_icon"
+        android:id="@+id/splash_imgview"
+        android:contentDescription="@string/splash_imgview"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:layout_marginStart="96dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/splash_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/splash_title"
+        android:textColor="@color/colorsplash_font"
+        android:textStyle="normal|bold"
+        android:textSize="32sp"
+        android:layout_marginTop="150dp"
+        android:layout_toEndOf="@+id/splash_imgview"
+        android:layout_marginStart="32dp" />
+
+    <TextView
+        android:text="@string/splash_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/splash_heading"
+        android:textColor="@color/colorsplash_font"
+        android:textSize="32sp"
+        android:layout_alignStart="@+id/splash_title"
+        android:layout_below="@+id/splash_title" />
+
+    <TextView
+        android:text="@string/splash_cityname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/splash_cityname"
+        android:textColor="@color/colorsplash_font"
+        android:textSize="32sp"
+        android:layout_below="@+id/splash_title"
+        android:layout_toEndOf="@+id/splash_heading"
+        android:layout_marginStart="8dp"
+        android:textStyle="normal|italic" />
+</RelativeLayout>
