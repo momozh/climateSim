@@ -6,7 +6,7 @@
     <string name="button_NextTurn">NextTurn</string>
     <string name="inTurn">Turn: </string>
     <string name="TotalMoney">TotalMoney: </string>
-    <string name="Temperature">27°C</string>
+    <string name="Temperature">26.5°C</string>
     <string name="backMenu">Go back</string>
 
     <string name="splash_imgview">Smart Cities App logo</string>

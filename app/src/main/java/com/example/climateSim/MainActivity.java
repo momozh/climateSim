@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     public int totalPollution = 5000;     // 现在污染程度 工厂污染和CHC空间售卖 (total pollution)
     public int totalMoney = 1000;         //现在总金额 (total money)
-    public float temperature = 26.0f;      // 当前温度
+    public float temperature = 26.6f;      // 当前温度
     public float satisfaction = 50;
 
     public int inTurn = 1;
@@ -34,9 +34,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        Intent splash = new Intent(this,Splash2.class);
+
+        startActivityForResult(splash,4);
 
         /*//set font
         Typeface tf = Typeface.createFromAsset(getAssets(),
@@ -99,7 +104,10 @@ public class MainActivity extends AppCompatActivity {
                 market.notUsedPlace -= factory.turnPollution;
                 totalPollution += market.soldGHG()[1];
             }
-            temperature = 23.00f + (float)Math.log10(totalPollution);
+
+            float temp = (float)(Math.log10(totalPollution));
+
+            temperature = 23.00f + (float)(Math.round(temp*100))/100;
 
             totalPollution *= 0.95;
 

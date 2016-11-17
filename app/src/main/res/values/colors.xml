@@ -7,4 +7,7 @@
     <color name="colorsplash_font">#492F91</color>
     <color name="gradient_startColor">#FFFAC1</color>
     <color name="gradient_endColor">#96DAF8</color>
+
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="blackColor">#000000</color>
 </resources>

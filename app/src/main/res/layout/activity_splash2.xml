@@ -5,7 +5,8 @@
     android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient">
+    android:background="@drawable/background_gradient"
+    android:onClick="Back">
 
     <ImageView
         app:srcCompat="@drawable/splashscreen_icon"
@@ -13,9 +14,9 @@
         android:contentDescription="@string/splash_imgview"
         android:layout_width="192dp"
         android:layout_height="192dp"
-        android:layout_marginStart="96dp"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toStartOf="@+id/splash_title"
+        android:layout_marginEnd="61dp" />
 
     <TextView
         android:text="@string/splash_title"
@@ -25,9 +26,9 @@
         android:textColor="@color/colorsplash_font"
         android:textStyle="normal|bold"
         android:textSize="32sp"
-        android:layout_marginTop="150dp"
-        android:layout_toEndOf="@+id/splash_imgview"
-        android:layout_marginStart="32dp" />
+        android:layout_marginTop="40dp"
+        android:layout_alignTop="@+id/splash_imgview"
+        android:layout_alignStart="@+id/splash_heading" />
 
     <TextView
         android:text="@string/splash_heading"
@@ -36,8 +37,9 @@
         android:id="@+id/splash_heading"
         android:textColor="@color/colorsplash_font"
         android:textSize="32sp"
+
         android:layout_alignBottom="@+id/splash_cityname"
-        android:layout_alignStart="@+id/splash_title" />
+        android:layout_toStartOf="@+id/splash_cityname" />
 
     <EditText
         android:text="@string/splash_cityname"
@@ -46,18 +48,11 @@
         android:id="@+id/splash_cityname"
         android:textColor="@color/colorsplash_font"
         android:textSize="32sp"
-        android:layout_below="@+id/splash_title"
-        android:layout_toEndOf="@+id/splash_heading"
-        android:layout_marginStart="8dp"
         android:textStyle="normal|italic"
-        android:editable="false" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
-        android:layout_below="@+id/splash_imgview"
-        android:layout_alignEnd="@+id/splash_title"
-        android:onClick="Back" />
+        android:layout_below="@+id/splash_title"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="146dp" />
+
+
 </RelativeLayout>
