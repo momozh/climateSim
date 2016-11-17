@@ -7,4 +7,22 @@
     <color name="colorsplash_font">#492F91</color>
     <color name="gradient_startColor">#FFFAC1</color>
     <color name="gradient_endColor">#96DAF8</color>
+
+    <color name="btn_nextColor">#3E508B</color>
+    <color name="btn_prevColor">#FF3F80</color>
+    <color name="text_nextColor">#FFFFFF</color>
+    <color name="text_prevColor">#FFFFFF</color>
+
+    <color name="factory_topColor">#FFA000</color>
+    <color name="factory_downColor">#FFD54F</color>
+
+    <color name="market_topColor">#00796B</color>
+    <color name="market_downColor">#4DB6AC</color>
+
+    <color name="institution_topColor">#616161</color>
+    <color name="institution_downColor">#E0E0E0</color>
+
+    <color name="th_topColor">#AFB42B</color>
+    <color name="th_downColor">#DCE775</color>
+
 </resources>

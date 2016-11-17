@@ -20,7 +20,7 @@
         </activity>
         <activity android:name="com.example.climateSim.A_Factory" />
         <activity android:name="com.example.climateSim.A_Government" />
-        <activity android:name="com.example.climateSim.A_Market"></activity>
+        <activity android:name="com.example.climateSim.A_Market"/>
     </application>
 
 </manifest>
