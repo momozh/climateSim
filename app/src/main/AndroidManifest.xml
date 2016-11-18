@@ -11,17 +11,21 @@
         android:anyDensity="true">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="userLandscape">
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".A_Factory" />
-        <activity android:name=".A_Government" />
-        <activity android:name=".A_Market" />
-        <activity android:name=".Splash"></activity>
+        <activity android:name=".A_Factory"
+            android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".A_Government"
+            android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".A_Market"
+            android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".Splash"
+            android:screenOrientation="sensorLandscape"/>
     </application>
 
 </manifest>
