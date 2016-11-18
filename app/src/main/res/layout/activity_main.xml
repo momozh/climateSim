@@ -7,37 +7,26 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.climateSim.MainActivity">
+    tools:context="com.example.climateSim.MainActivity"
+    android:background="@drawable/main_background">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+    
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/TotalMoney"
-            android:textSize="25dp"
+            android:textSize="23dp"
             android:textStyle="bold"
             android:id="@+id/i_TotalMoney"
+            android:textColor="@color/whiteColor"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/i_Temperatur"
-            android:layout_marginRight="40dp"/>
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="9dp"
+            
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/inTurn"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:id="@+id/i_Satisfaction"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/i_Temperatur"
-            android:layout_marginLeft="40dp"/>
-    </LinearLayout>
+    
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,8 +34,9 @@
         android:text="@string/Temperature"
         android:textSize="70dp"
         android:textStyle="bold"
-        android:id="@+id/i_Temperatur"
-        android:layout_centerVertical="true"
+        android:textColor="@color/whiteColor"
+        android:id="@+id/i_i_Temperatur"
+       android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
@@ -54,38 +44,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout6">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:text="@string/button_factory"
             android:id="@+id/i_button"
             android:onClick="onFactory"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="70dp"
-             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/ft" />
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
             android:text="@string/button_government"
             android:id="@+id/i_government"
             android:onClick="onGovernment"
             android:layout_alignTop="@+id/i_button"
-            android:layout_toStartOf="@+id/i_Temperatur"
-            android:layout_marginLeft="70dp"/>
+             
+            android:layout_marginLeft="70dp"
+            android:background="@drawable/th" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:text="@string/button_Market"
             android:id="@+id/i_market"
             android:onClick="onMarket"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/i_Temperatur"
-            android:layout_marginLeft="70dp"/>
+            
+            android:layout_marginLeft="70dp"
+            android:background="@drawable/mt" />
 
         <Button
             android:layout_width="wrap_content"
@@ -97,5 +92,73 @@
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="70dp"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout6"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Factory"
+            android:textSize="24sp"
+            android:layout_marginLeft="70dp"
+            android:id="@+id/textView5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TownHall"
+            android:id="@+id/textView6"
+            android:textSize="24sp"
+            android:layout_marginLeft="60dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Market"
+            android:id="@+id/textView7"
+            android:textSize="24sp"
+            android:layout_marginLeft="63dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next Turn"
+            android:id="@+id/textView8"
+            android:textSize="24sp"
+            android:layout_marginLeft="70dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inTurn"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:id="@+id/i_Satisfaction"
+        android:textColor="@color/whiteColor"
+        android:layout_marginLeft="500dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="9dp"
+
+        android:layout_alignTop="@+id/i_Satisfaction"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/textView9"
+        android:textSize="55sp"
+        android:textColor="@color/whiteColor"
+        android:textStyle="bold"
+        android:layout_marginLeft="368dp"
+        android:layout_marginTop="-17dp"
+        android:layout_alignBottom="@+id/i_TotalMoney"
+        android:layout_alignStart="@+id/linearLayout7" />
 
 </RelativeLayout>
