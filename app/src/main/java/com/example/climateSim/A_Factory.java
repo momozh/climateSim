@@ -31,7 +31,7 @@ public class A_Factory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a_factory);
+        setContentView(R.layout.activity_factory);
         Intent i = getIntent();
 
         factory = new Factory();

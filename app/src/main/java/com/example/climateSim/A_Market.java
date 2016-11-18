@@ -24,7 +24,7 @@ public class A_Market extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a__market);
+        setContentView(R.layout.activity_market);
 
         market = new Market();
         factory = new Factory();

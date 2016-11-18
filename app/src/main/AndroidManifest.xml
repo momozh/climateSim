@@ -21,7 +21,7 @@
         <activity android:name=".A_Factory" />
         <activity android:name=".A_Government" />
         <activity android:name=".A_Market" />
-        <activity android:name=".Splash2"></activity>
+        <activity android:name=".Splash"></activity>
     </application>
 
 </manifest>

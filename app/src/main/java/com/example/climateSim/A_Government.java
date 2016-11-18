@@ -17,7 +17,7 @@ public class A_Government extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a__government);
+        setContentView(R.layout.activity_th);
 
         factory = new Factory();
 

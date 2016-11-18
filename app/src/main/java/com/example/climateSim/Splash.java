@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Splash2 extends AppCompatActivity {
+public class Splash extends AppCompatActivity {
     EditText et_place;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class Splash2 extends AppCompatActivity {
                 et_place.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
                     public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                        Toast.makeText(Splash2.this,String.valueOf(i),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Splash.this,String.valueOf(i),Toast.LENGTH_SHORT).show();
                         return false;
                     }
                 });

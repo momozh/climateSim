@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        Intent splash = new Intent(this,Splash2.class);
+        Intent splash = new Intent(this,Splash.class);
 
         startActivityForResult(splash,4);
 
