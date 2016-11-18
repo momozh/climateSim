@@ -185,9 +185,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void UpdateText()
     {
-        ttMoney = "Total Money:" + totalMoney + " k$";
+        ttMoney = totalMoney + " k$";
         temp = temperature + "°C";
-        satis = "In Turn: " + inTurn;
+        satis =  inTurn +" ";
 
         tv_money = (TextView)findViewById(R.id.i_TotalMoney);
         tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
@@ -196,6 +196,11 @@ public class MainActivity extends AppCompatActivity {
         tv_money.setText(ttMoney);
         tv_temperature.setText(temp);
         tv_satisfaction.setText(satis);
+    }
+
+    public void Quiz(View v)
+    {
+
     }
 }
 

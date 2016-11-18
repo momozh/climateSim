@@ -12,7 +12,7 @@
 
     
 
-        <TextView
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/TotalMoney"
@@ -23,10 +23,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="190dp"
             android:layout_marginTop="9dp"
-            
-            />
-
-    
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +32,7 @@
         android:textSize="70dp"
         android:textStyle="bold"
         android:textColor="@color/whiteColor"
-        android:id="@+id/i_i_Temperatur"
+        android:id="@+id/i_Temperatur"
        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -142,11 +139,11 @@
         android:textSize="24sp"
         android:id="@+id/i_Satisfaction"
         android:textColor="@color/whiteColor"
-        android:layout_marginLeft="500dp"
+        android:layout_marginStart="500dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="9dp"
 
-        android:layout_alignTop="@+id/i_Satisfaction"/>
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -156,7 +153,7 @@
         android:textSize="55sp"
         android:textColor="@color/whiteColor"
         android:textStyle="bold"
-        android:layout_marginLeft="368dp"
+        android:layout_marginStart="368dp"
         android:layout_marginTop="-17dp"
         android:layout_alignBottom="@+id/i_TotalMoney"
         android:layout_alignStart="@+id/linearLayout7" />
