@@ -218,7 +218,6 @@
                 android:textColor="@color/whiteColor"
                 android:textSize="18dp"
                 android:id="@+id/i_f_cost"
-                android:singleLine="false"
                 android:layout_marginLeft="3dp"
                  />
 
