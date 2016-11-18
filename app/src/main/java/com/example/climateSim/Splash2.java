@@ -14,7 +14,7 @@ public class Splash2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash2);
+        setContentView(R.layout.activity_splash);
 
         et_place = (EditText)findViewById(R.id.splash_cityname);
 
