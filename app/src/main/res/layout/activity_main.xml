@@ -11,7 +11,7 @@
     tools:context="com.example.climateSim.MainActivity"
     android:background="@drawable/main_background">
 
-    //test2
+    //test3
 
     <TextView
             android:layout_width="wrap_content"
