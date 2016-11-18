@@ -26,6 +26,10 @@
             android:screenOrientation="sensorLandscape"/>
         <activity android:name=".Splash"
             android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".QuestionActivity"
+            android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".ResultActivity"
+            android:screenOrientation="sensorLandscape"/>
     </application>
 
 </manifest>

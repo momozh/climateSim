@@ -181,6 +181,12 @@ public class MainActivity extends AppCompatActivity {
 
             UpdateText();
         }
+        if(resultCode == 4)
+        {
+            //add earned money from quiz
+
+            UpdateText();
+        }
     }
 
     public void UpdateText()
@@ -200,7 +206,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void Quiz(View v)
     {
+        Intent i = new Intent(this,QuestionActivity.class);
 
+        startActivityForResult(i,4);
     }
 }
 

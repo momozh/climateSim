@@ -157,6 +157,7 @@
         android:layout_marginStart="368dp"
         android:layout_marginTop="-17dp"
         android:layout_alignBottom="@+id/i_TotalMoney"
-        android:layout_alignStart="@+id/linearLayout7" />
+        android:layout_alignStart="@+id/linearLayout7"
+        android:onClick="Quiz" />
 
 </RelativeLayout>
