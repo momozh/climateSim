@@ -2,8 +2,8 @@ package com.example.climateSim;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     public int totalPollution = 5000;     // 现在污染程度 工厂污染和CHC空间售卖 (total pollution)
     public int totalMoney = 1000;         //现在总金额 (total money)
     public float temperature = 26.6f;      // 当前温度
-    public float satisfaction = 50;
+
 
     public int inTurn = 1;
     public boolean turnEnd = false;
@@ -24,12 +24,18 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tv_money;
     TextView tv_temperature;
-    TextView tv_satisfaction;
+    TextView tv_inTurn;
 
+    // new changing from th
+    
+    TextView tv_pollution;
+    TextView tv_satisfaction;
+    TextView tv_travelIncome;
+    
     // Text display
     String ttMoney;
     String temp;
-    String satis;
+    String turn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
         // government
         government.Init();
         government.inputValue(totalMoney,totalPollution);
+
+        // new changing
+        government.calculateHappiness();
+        tv_pollution = (TextView)findViewById(R.id.i_g_pollution);
+        tv_satisfaction = (TextView)findViewById(R.id.i_satisfaction);
+        tv_travelIncome = (TextView)findViewById(R.id.i_TravelInome);
+
+        tv_pollution.setText("Pollution: " + government.totalPollution + " ug/m^3");
+        tv_satisfaction.setText("Satisfaction: " + government.getHappiness() + "%");
+        tv_travelIncome.setText("Travel Income: " + government.calculateTravelIncome(factory.totalInstitutionLevel()) + " k$");
 
         // Text display
         UpdateText();
@@ -141,21 +157,25 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent i = new Intent(this,A_Factory.class);
 
+        i.putExtra("money",totalMoney);
+        i.putExtra("temp",temperature);
+        i.putExtra("turn",inTurn);
+
         startActivityForResult(i,1);
     }
 
-    public void onGovernment(View v)
+    /*public void onGovernment(View v)
     {
         Intent i = new Intent(this,A_Government.class);
         //i.putExtra("TotalPollution", totalPollution);
 
         startActivityForResult(i,2);
-    }
+    }*/
 
     public void onMarket(View v)
     {
-        Intent i = new Intent(this,A_Market.class);
-        //i.putExtra("TotalPollution", totalPollution);
+        Intent i = new Intent(this,A_Factory.class);
+        i.putExtra("toMarket", 33);
 
         startActivityForResult(i,3);
     }
@@ -166,10 +186,6 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == 1)
         {
             //factory.currentUnit = data.getIntExtra("current Unit",factory.currentUnit);
-            UpdateText();
-        }
-        if(resultCode == 2)
-        {
             UpdateText();
         }
         if(resultCode == 3)
@@ -187,28 +203,34 @@ public class MainActivity extends AppCompatActivity {
 
             UpdateText();
         }
+
+        if(resultCode == 5)
+        {
+            totalMoney += data.getIntExtra("earnMoney",0);
+            UpdateText();
+        }
     }
 
     public void UpdateText()
     {
         ttMoney = totalMoney + " k$";
         temp = temperature + "°C";
-        satis =  inTurn +" ";
+        turn = 2017 + 5 * inTurn +" ";
 
         tv_money = (TextView)findViewById(R.id.i_TotalMoney);
         tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
-        tv_satisfaction = (TextView)findViewById(R.id.i_Satisfaction);
+        tv_inTurn = (TextView)findViewById(R.id.i_Satisfaction);
 
         tv_money.setText(ttMoney);
         tv_temperature.setText(temp);
-        tv_satisfaction.setText(satis);
+        tv_inTurn.setText(turn);
     }
 
     public void Quiz(View v)
     {
         Intent i = new Intent(this,QuestionActivity.class);
 
-        startActivityForResult(i,4);
+        startActivityForResult(i,5);
     }
 }
 
