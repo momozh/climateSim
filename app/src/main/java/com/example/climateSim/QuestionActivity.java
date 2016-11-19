@@ -89,7 +89,7 @@ public class QuestionActivity extends Activity {
 
             // if conditions matches increase the int (score) by 1
             // and set the text of the score view
-            score++;
+            score+=100;
             scored.setText("Score: " + score);
             //toast
             Context context = getApplicationContext();
@@ -118,7 +118,21 @@ public class QuestionActivity extends Activity {
             Bundle b = new Bundle();
             b.putInt("score", score); // Your score
             intent.putExtras(b); // Put your score to your next
-            startActivity(intent);
+            startActivityForResult(intent,1);
+ 
+        }
+ 
+    }
+ 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1)
+        {
+            Intent i = new Intent();
+            int earnMoney = data.getIntExtra("Money",0);
+            i.putExtra("earnMoney",earnMoney);
+            setResult(5,i);                 
             finish();
         }
 
