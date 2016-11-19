@@ -28,11 +28,33 @@ public class A_Factory extends AppCompatActivity {
     TextView tv_curUnit;
     TextView tv_max;
     TextView tv_cost;
+
+    // new top
+    TextView tv_money;
+    TextView tv_temperature;
+    TextView tv_inTurn;
+
+    String ttMoney;
+    String temp;
+    String turn;
+
+    int totalMoney;
+    float temperature;
+    int inTurn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_factory);
         Intent i = getIntent();
+
+        // go to market, from main
+        if(i.getIntExtra("toMarket",0) == 33)
+        {
+            Intent mar = new Intent(this,A_Market.class);
+
+            startActivityForResult(mar,3);
+        }
 
         factory = new Factory();
         market = new Market();
@@ -73,6 +95,22 @@ public class A_Factory extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == 3)
+        {
+            Intent i = new Intent();
+            setResult(3,i);
+            finish();
+        }
+        if(resultCode == 2)
+        {
+            // go on on factory
+        }
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -107,6 +145,13 @@ public class A_Factory extends AppCompatActivity {
         i.putExtra("current Unit",factory.currentUnit);
         setResult(1,i);
         finish();
+    }
+
+    public void onMarket(View v)
+    {
+        Intent i = new Intent(this,A_Market.class);
+
+        startActivityForResult(i,2);
     }
 
     public void onLevelUp1(View v)
@@ -200,5 +245,25 @@ public class A_Factory extends AppCompatActivity {
         builder.create().show();
 
 
+    }
+
+    public void onNextTurn()
+    {
+
+    }
+
+    public void UpdateText()
+    {
+        ttMoney = totalMoney + " k$";
+        temp = temperature + "°C";
+        turn =  inTurn +" ";
+
+        tv_money = (TextView)findViewById(R.id.i_TotalMoney);
+        tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
+        tv_inTurn = (TextView)findViewById(R.id.i_Satisfaction);
+
+        tv_money.setText(ttMoney);
+        tv_temperature.setText(temp);
+        tv_inTurn.setText(turn);
     }
 }
