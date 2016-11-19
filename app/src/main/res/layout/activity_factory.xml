@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.example.climateSim.A_Factory"
     android:background="@drawable/factory_bg">
 
@@ -21,7 +21,7 @@
         android:id="@+id/title"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        />
+        android:layout_marginTop="41dp" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -176,62 +176,9 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/i_toMenu"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout4">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/i_toMenu"
-            android:layout_alignStart="@+id/i_maxUnit"
-            android:layout_gravity="bottom">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Current: 5"
-                android:textColor="@color/whiteColor"
-                android:textSize="18dp"
-                android:id="@+id/i_curUnit"
-                android:layout_above="@+id/i_unitBar"
-                android:layout_marginLeft="3dp"
-                android:layout_alignStart="@+id/i_unitBar" />
-
-            <SeekBar
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/i_unitBar"
-                android:max = "100"
-                android:progress="5"
-                android:onClick="onBack"
-                android:indeterminate="false"
-                android:layout_alignTop="@+id/i_toMenu"
-                android:layout_alignParentStart="true"
-                 />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cost:"
-                android:textColor="@color/whiteColor"
-                android:textSize="18dp"
-                android:id="@+id/i_f_cost"
-                android:layout_marginLeft="3dp"
-                 />
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MaxUnit"
-            android:textColor="@color/whiteColor"
-            android:textSize="18dp"
-            android:id="@+id/i_maxUnit"
-            android:layout_marginTop="18dp"
-           />
+        android:id="@+id/linearLayout4"
+        android:layout_alignBottom="@+id/i_maxUnit">
 
     </LinearLayout>
 
@@ -245,13 +192,144 @@
         android:layout_below="@+id/linearLayout3"
         android:layout_alignStart="@+id/linearLayout3" />
 
-    <Button
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/backMenu"
-        android:id="@+id/i_toMenu"
-        android:onClick="onBack"
         android:layout_gravity="bottom"
+        android:layout_below="@+id/i_up1_cost3"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current: 5"
+            android:textColor="@color/whiteColor"
+            android:textSize="18dp"
+            android:id="@+id/i_curUnit"
+            android:layout_above="@+id/i_unitBar"
+            android:layout_marginLeft="3dp"
+            android:layout_alignStart="@+id/i_unitBar" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/i_unitBar"
+            android:max = "100"
+            android:progress="5"
+            android:onClick="onBack"
+            android:indeterminate="false"
+            android:layout_alignTop="@+id/i_toMenu"
+            android:layout_alignParentStart="true"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost:"
+            android:textColor="@color/whiteColor"
+            android:textSize="18dp"
+            android:id="@+id/i_f_cost"
+            android:layout_marginLeft="3dp"
+             />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MaxUnit"
+        android:textColor="@color/whiteColor"
+        android:textSize="18dp"
+        android:id="@+id/i_maxUnit"
+        android:layout_alignBottom="@+id/linearLayout5"
+        android:layout_toEndOf="@+id/linearLayout5" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout7"
+
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignEnd="@+id/linearLayout3">
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="@string/button_factory"
+            android:id="@+id/imageButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="70dp"
+            android:background="@drawable/factory_btn" />
+
+
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="@string/button_Market"
+            android:id="@+id/imageButton3"
+            android:onClick="onMarket"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="70dp"
+            android:background="@drawable/market_btn" />
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="@string/button_government"
+            android:id="@+id/imageButton2"
+            android:layout_alignTop="@+id/imageButton"
+            android:layout_marginLeft="70dp"
+            android:background="@drawable/th_btn"
+            android:onClick="onBack" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_NextTurn"
+            android:id="@+id/button3"
+            android:onClick="onNextTurn"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="70dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TotalMoney"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        android:id="@+id/f_ttm"
+        android:textColor="@color/whiteColor"
+        android:layout_marginLeft="190dp"
+        android:layout_alignBaseline="@+id/f_tem"
+        android:layout_alignBottom="@+id/f_tem"
+        android:layout_toEndOf="@+id/i_maxUnit"
+        android:layout_marginStart="115dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inTurn"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:id="@+id/f_it"
+        android:textColor="@color/whiteColor"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/f_tem" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Temperature"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:textColor="@color/whiteColor"
+        android:id="@+id/f_tem"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/linearLayout7" />
 </RelativeLayout>
