@@ -171,4 +171,50 @@ public class A_Market extends AppCompatActivity {
 
 
     }
+
+    public void onFactory(View v)
+    {
+        if(!market.bought && !market.sold)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Attention");
+            builder.setMessage("You haven't bought or sold, sure to leave?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    dialogInterface.dismiss();
+
+                    Intent intent = new Intent();
+                    // i.putExtra("current Unit",factory.currentUnit);
+                    setResult(2,intent);
+
+                    finish();
+
+                }
+            });
+
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    dialogInterface.dismiss();
+
+                }
+            });
+
+            builder.create().show();
+        }
+        else {
+            Intent i = new Intent();
+            // i.putExtra("current Unit",factory.currentUnit);
+            setResult(2,i);
+            finish();
+        }
+    }
+
+    public void onNextTurn()
+    {
+
+    }
 }
