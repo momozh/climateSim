@@ -80,9 +80,14 @@ public class MainActivity extends AppCompatActivity {
         tv_satisfaction = (TextView)findViewById(R.id.i_satisfaction);
         tv_travelIncome = (TextView)findViewById(R.id.i_TravelInome);
 
-        tv_pollution.setText("Pollution: " + government.totalPollution + " ug/m^3");
-        tv_satisfaction.setText("Satisfaction: " + government.getHappiness() + "%");
-        tv_travelIncome.setText("Travel Income: " + government.calculateTravelIncome(factory.totalInstitutionLevel()) + " k$");
+        tv_pollution.setText( government.totalPollution + " ug/m^3");
+        tv_satisfaction.setText( government.getHappiness() + "%");
+        tv_travelIncome.setText(government.calculateTravelIncome(factory.totalInstitutionLevel()) + " k$");
+
+        tv_money = (TextView)findViewById(R.id.i_TotalMoney);
+        tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
+        tv_inTurn = (TextView)findViewById(R.id.i_Satisfaction);
+
 
         // Text display
         UpdateText();
@@ -133,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
             float temp = (float)(Math.log10(totalPollution));
 
+            if(temperature >= 26f)
             temperature = 23.00f + (float)(Math.round(temp*100))/100;
 
             totalPollution *= 0.95;
@@ -167,9 +173,9 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent i = new Intent(this,A_Factory.class);
 
-        i.putExtra("money",totalMoney);
-        i.putExtra("temp",temperature);
-        i.putExtra("turn",inTurn);
+
+        i.putExtra("temp_MainToFac",temperature);
+        i.putExtra("turn_MainToFac",inTurn);
 
         startActivityForResult(i,1);
     }
@@ -187,6 +193,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this,A_Factory.class);
         i.putExtra("toMarket", 33);
 
+        i.putExtra("temp_MainToMar",temperature);
+        i.putExtra("turn_MainToMar",inTurn);
+
         startActivityForResult(i,3);
     }
 
@@ -194,9 +203,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 1)
-        {
+        {// back from factory
             //factory.currentUnit = data.getIntExtra("current Unit",factory.currentUnit);
+
+            totalMoney = factory.totalMoney;
+            temperature = data.getFloatExtra("temp_FacToMain",0);
+            inTurn = data.getIntExtra("turn_FacToMain",0);
             UpdateText();
+        }
+        if(resultCode == 7)
+        {
+            totalMoney = factory.totalMoney;
+            temperature = data.getFloatExtra("temp_FacToMain",0);
+            inTurn = data.getIntExtra("turn_FacToMain",0);
+            UpdateText();
+            onNextTurn(findViewById(R.id.i_nextTurn));
         }
         if(resultCode == 3)
         {
@@ -205,7 +226,25 @@ public class MainActivity extends AppCompatActivity {
 
             government.inputValue(totalMoney,totalPollution);
 
+            temperature = data.getFloatExtra("temp_MarToMain",0);
+            inTurn = data.getIntExtra("turn_MarToMain",0);
+
+
             UpdateText();
+        }
+        if(resultCode == 6)
+        {
+            totalMoney = factory.totalMoney;
+            totalPollution = factory.totalPollution;
+
+            government.inputValue(totalMoney,totalPollution);
+
+            temperature = data.getFloatExtra("temp_MarToMain",0);
+            inTurn = data.getIntExtra("turn_MarToMain",0);
+
+
+            UpdateText();
+            onNextTurn(findViewById(R.id.i_nextTurn));
         }
         if(resultCode == 4)
         {
@@ -216,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(resultCode == 5)
         {
+            factory.totalMoney += data.getIntExtra("earnMoney",0);
             totalMoney += data.getIntExtra("earnMoney",0);
             UpdateText();
         }
@@ -223,13 +263,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void UpdateText()
     {
+        totalMoney = factory.totalMoney;
+
         ttMoney = totalMoney + " k$";
         temp = temperature + "°C";
         turn = 2017 + 5 * inTurn +" ";
 
-        tv_money = (TextView)findViewById(R.id.i_TotalMoney);
-        tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
-        tv_inTurn = (TextView)findViewById(R.id.i_Satisfaction);
+
 
         tv_money.setText(ttMoney);
         tv_temperature.setText(temp);

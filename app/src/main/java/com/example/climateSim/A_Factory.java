@@ -15,13 +15,13 @@ public class A_Factory extends AppCompatActivity {
     Factory factory;
     Market market;
 
-    ProgressBar progressBar1;
+    //ProgressBar progressBar1;
     TextView tv_up1Cost;
 
-    ProgressBar progressBar2;
+    //ProgressBar progressBar2;
     TextView tv_up2Cost;
 
-    ProgressBar progressBar3;
+    //ProgressBar progressBar3;
     TextView tv_up3Cost;
 
     SeekBar sb_buy;
@@ -53,27 +53,40 @@ public class A_Factory extends AppCompatActivity {
         {
             Intent mar = new Intent(this,A_Market.class);
 
+            mar.putExtra("temp_MainToMar",i.getFloatExtra("temp_MainToMar",0));
+            mar.putExtra("turn_MainToMar",i.getIntExtra("turn_MainToMar",0));
+
             startActivityForResult(mar,3);
         }
 
         factory = new Factory();
         market = new Market();
 
-        progressBar1 = (ProgressBar)findViewById(R.id.progressBar1) ;
+        totalMoney = factory.totalMoney;
+        temperature = i.getFloatExtra("temp_MainToFac",26.6f);
+        inTurn = i.getIntExtra("turn_MainToFac",2022);
+
+
+        /*progressBar1 = (ProgressBar)findViewById(R.id.progressBar1) ;
         progressBar1.setMax(5);
         progressBar1.setProgress(factory.institutionLevel[0]);
-        tv_up1Cost = (TextView)findViewById(R.id.i_up1_cost);
-        tv_up1Cost.setText("Level" +factory.institutionLevel[0] +" Cost: " + factory.institutionSpending[0] + "k$");
+
 
         progressBar2 = (ProgressBar)findViewById(R.id.progressBar2) ;
         progressBar2.setMax(5);
         progressBar2.setProgress(factory.institutionLevel[1]);
-        tv_up2Cost = (TextView)findViewById(R.id.i_up1_cost2);
-        tv_up2Cost.setText("Level" +factory.institutionLevel[1] +" Cost: " + factory.institutionSpending[1]+ "k$");
+
 
         progressBar3 = (ProgressBar)findViewById(R.id.progressBar3) ;
         progressBar3.setMax(5);
-        progressBar3.setProgress(factory.institutionLevel[2]);
+        progressBar3.setProgress(factory.institutionLevel[2]);*/
+
+        tv_up2Cost = (TextView)findViewById(R.id.i_up1_cost2);
+        tv_up2Cost.setText("Level" +factory.institutionLevel[1] +" Cost: " + factory.institutionSpending[1]+ "k$");
+
+        tv_up1Cost = (TextView)findViewById(R.id.i_up1_cost);
+        tv_up1Cost.setText("Level" +factory.institutionLevel[0] +" Cost: " + factory.institutionSpending[0] + "k$");
+
         tv_up3Cost = (TextView)findViewById(R.id.i_up1_cost3);
         tv_up3Cost.setText("Level" +factory.institutionLevel[2] +" Cost: " + factory.institutionSpending[2]+ "k$" );
 
@@ -90,8 +103,11 @@ public class A_Factory extends AppCompatActivity {
             + "\nNot used GHG place: " + market.notUsedPlace + " ug/m^3"
         );
 
+        tv_money = (TextView)findViewById(R.id.f_TotalMoney);
+        tv_temperature = (TextView)findViewById(R.id.f_Temperature);
+        tv_inTurn = (TextView)findViewById(R.id.f_turn);
 
-
+        UpdateText();
     }
 
     @Override
@@ -99,14 +115,41 @@ public class A_Factory extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == 3)
+        {   // go back from market
+            Intent i = new Intent();
+
+
+            i.putExtra("temp_MarToMain",data.getFloatExtra("temp_MarToMain",0));
+            i.putExtra("turn_MarToMain",data.getIntExtra("turn_MarToMain",0));
+            setResult(3,i);
+            finish();
+        }
+
+        if(resultCode == 4) // market next turn
         {
             Intent i = new Intent();
-            setResult(3,i);
+
+
+            i.putExtra("temp_MarToMain",data.getFloatExtra("temp_MarToMain",0));
+            i.putExtra("turn_MarToMain",data.getIntExtra("turn_MarToMain",0));
+            setResult(6,i);
             finish();
         }
         if(resultCode == 2)
         {
+            totalMoney = factory.totalMoney;
+
+            temperature = data.getFloatExtra("temp_FacToMar",0);
+            inTurn = data.getIntExtra("turn_FacToMar",0);
+            UpdateText();
             // go on on factory
+        }
+
+        if(resultCode == 5)
+        {
+            factory.totalMoney += data.getIntExtra("earnMoney",0);
+            totalMoney = factory.totalMoney;
+            UpdateText();
         }
     }
 
@@ -142,7 +185,10 @@ public class A_Factory extends AppCompatActivity {
     public void onBack(View v)
     {
         Intent i = new Intent();
-        i.putExtra("current Unit",factory.currentUnit);
+
+
+        i.putExtra("temp_FacToMain",temperature);
+        i.putExtra("turn_FacToMain",inTurn);
         setResult(1,i);
         finish();
     }
@@ -167,7 +213,7 @@ public class A_Factory extends AppCompatActivity {
 
                 factory.levelUp_Type1();
                 tv_up1Cost.setText("Level" +factory.institutionLevel[0] +" Cost: " + factory.institutionSpending[0] + " k$");
-                progressBar1.setProgress(factory.institutionLevel[0]);
+                //progressBar1.setProgress(factory.institutionLevel[0]);
 
             }
         });
@@ -197,7 +243,7 @@ public class A_Factory extends AppCompatActivity {
 
                 factory.levelUp_Type2();
                 tv_up2Cost.setText("Level" +factory.institutionLevel[1] +" Cost: " + factory.institutionSpending[1] + " k$");
-                progressBar2.setProgress(factory.institutionLevel[1]);
+                //progressBar2.setProgress(factory.institutionLevel[1]);
 
             }
         });
@@ -228,7 +274,7 @@ public class A_Factory extends AppCompatActivity {
 
                 factory.levelUp_Type3();
                 tv_up3Cost.setText("Level" +factory.institutionLevel[2] +" Cost: " + factory.institutionSpending[2] + " k$");
-                progressBar3.setProgress(factory.institutionLevel[2]);
+                //progressBar3.setProgress(factory.institutionLevel[2]);
 
             }
         });
@@ -247,20 +293,35 @@ public class A_Factory extends AppCompatActivity {
 
     }
 
-    public void onNextTurn()
+    public void onNextTurn(View v)
     {
+        Intent i = new Intent();
 
+
+        i.putExtra("temp_FacToMain",temperature);
+        i.putExtra("turn_FacToMain",inTurn);
+        setResult(7,i);
+        finish();
     }
+
+    public void Quiz(View v)
+    {
+        Intent i = new Intent(this,QuestionActivity.class);
+
+        startActivityForResult(i,5);
+    }
+
+
 
     public void UpdateText()
     {
+        totalMoney = factory.totalMoney;
+
         ttMoney = totalMoney + " k$";
         temp = temperature + "°C";
-        turn =  inTurn +" ";
+        turn = 2017 + 5 * inTurn +" ";
 
-        tv_money = (TextView)findViewById(R.id.i_TotalMoney);
-        tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
-        tv_inTurn = (TextView)findViewById(R.id.i_Satisfaction);
+
 
         tv_money.setText(ttMoney);
         tv_temperature.setText(temp);

@@ -24,7 +24,7 @@ public class Splash extends AppCompatActivity {
                 et_place.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
                     public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                        Toast.makeText(Splash.this,String.valueOf(i),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Splash.this,et_place.getText(),Toast.LENGTH_SHORT).show();
                         return false;
                     }
                 });

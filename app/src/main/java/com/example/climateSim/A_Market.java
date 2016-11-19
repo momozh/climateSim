@@ -21,19 +21,45 @@ public class A_Market extends AppCompatActivity {
 
     TextView tv_unitPrice;
 
+    // new top
+    TextView tv_money;
+    TextView tv_temperature;
+    TextView tv_inTurn;
+
+    String ttMoney;
+    String temp;
+    String turn;
+
+    int totalMoney;
+    float temperature;
+    int inTurn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
+        Intent i = getIntent();
+
+        temperature = i.getFloatExtra("temp_MainToMar",0);
+        inTurn = i.getIntExtra("turn_MainToMar",0);
+
         market = new Market();
         factory = new Factory();
+
+        totalMoney = factory.totalMoney;
+
+        tv_money = (TextView)findViewById(R.id.m_TotalMoney);
+        tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
+        tv_inTurn = (TextView)findViewById(R.id.m_inTurn);
+
+        UpdateText();
 
         tv_cost = (TextView)findViewById(R.id.i_m_ghgCost);
         tv_sold = (TextView)findViewById(R.id.i_m_pollutionAdd);
 
         tv_unitPrice = (TextView)findViewById(R.id.i_m_unitPrice);
-        tv_unitPrice.setText("Production Price: " + market.getUnitPrice() + " k$/Ton");
+        tv_unitPrice.setText("Production Price: \n" + market.getUnitPrice() + " k$/Ton");
 
         if(market.currUnitGHG >= 50)
             tv_cost.setText("Cost(90% off): " + market.currUnitGHG * market.ghgBuyPrice * 0.9 + " k$" + "\nUsable GHG place: " + market.currUnitGHG * 10 + " ug/m^3");
@@ -105,7 +131,8 @@ public class A_Market extends AppCompatActivity {
 
     public void onBuy(View v)
     {
-        if(!market.bought)
+
+        if(!market.bought && market.currUnitGHG != 0)
         {
             market.bought = true;
             market.sold =true;
@@ -113,12 +140,14 @@ public class A_Market extends AppCompatActivity {
 
 
             factory.totalMoney -= market.buyGHG();
+
+            UpdateText();
         }
     }
 
     public void onSell(View v)
     {
-        if(!market.sold)
+        if(!market.sold && market.currUnitSoldGHG != 0)
         {
             market.sold = true;
             market.bought = true;
@@ -126,6 +155,8 @@ public class A_Market extends AppCompatActivity {
 
             factory.totalMoney += market.soldGHG()[0];
             factory.totalPollution += market.soldGHG()[1];
+
+            UpdateText();
         }
     }
 
@@ -142,8 +173,11 @@ public class A_Market extends AppCompatActivity {
 
                     dialogInterface.dismiss();
 
+                    // go back to main
                         Intent intent = new Intent();
-                        // i.putExtra("current Unit",factory.currentUnit);
+
+                    intent.putExtra("temp_MarToMain",temperature);
+                    intent.putExtra("turn_MarToMain",inTurn);
                         setResult(3,intent);
 
                         finish();
@@ -165,6 +199,8 @@ public class A_Market extends AppCompatActivity {
         else {
         Intent i = new Intent();
         // i.putExtra("current Unit",factory.currentUnit);
+            i.putExtra("temp_MarToMain",temperature);
+            i.putExtra("turn_MarToMain",inTurn);
             setResult(3,i);
             finish();
         }
@@ -187,6 +223,8 @@ public class A_Market extends AppCompatActivity {
 
                     Intent intent = new Intent();
                     // i.putExtra("current Unit",factory.currentUnit);
+                    intent.putExtra("temp_FacToMar",temperature);
+                    intent.putExtra("turn_FacToMar",inTurn);
                     setResult(2,intent);
 
                     finish();
@@ -208,13 +246,88 @@ public class A_Market extends AppCompatActivity {
         else {
             Intent i = new Intent();
             // i.putExtra("current Unit",factory.currentUnit);
+            i.putExtra("temp_FacToMar",temperature);
+            i.putExtra("turn_FacToMar",inTurn);
             setResult(2,i);
             finish();
         }
     }
-
-    public void onNextTurn()
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 5) {
+            factory.totalMoney += data.getIntExtra("earnMoney", 0);
+            totalMoney += data.getIntExtra("earnMoney",0);
+            UpdateText();
+        }
+    }
+    public void UpdateText()
     {
+        totalMoney = factory.totalMoney;
+
+        ttMoney = totalMoney + " k$";
+        temp = temperature + "°C";
+        turn = 2017 + 5 * inTurn +" ";
+
+
+
+        tv_money.setText(ttMoney);
+        tv_temperature.setText(temp);
+        tv_inTurn.setText(turn);
+    }
+
+    public void Quiz(View v)
+    {
+        Intent i = new Intent(this,QuestionActivity.class);
+
+        startActivityForResult(i,5);
+    }
+
+    public void onNextTurn(View v)
+    {
+        if(!market.bought && !market.sold)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Attention");
+            builder.setMessage("You haven't bought or sold, sure to leave?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    dialogInterface.dismiss();
+
+                    // go back to main
+                    Intent intent = new Intent();
+
+                    intent.putExtra("temp_MarToMain",temperature);
+                    intent.putExtra("turn_MarToMain",inTurn);
+                    setResult(4,intent);
+
+                    finish();
+
+                }
+            });
+
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    dialogInterface.dismiss();
+
+                }
+            });
+
+            builder.create().show();
+        }
+        else {
+            Intent i = new Intent();
+            // i.putExtra("current Unit",factory.currentUnit);
+            i.putExtra("temp_MarToMain",temperature);
+            i.putExtra("turn_MarToMain",inTurn);
+            setResult(4,i);
+            finish();
+        }
+
 
     }
 }

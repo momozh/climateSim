@@ -50,7 +50,7 @@
 
         <EditText
             android:text="@string/splash_cityname"
-            android:layout_width="wrap_content"
+            android:layout_width="176dp"
             android:layout_height="wrap_content"
             android:id="@+id/splash_cityname"
             android:inputType="textCapWords"
