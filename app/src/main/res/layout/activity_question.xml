@@ -30,12 +30,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Score : 1"
+                android:text="Score: 0"
                 android:textColor="#ffffff"
                 android:textSize="25.0sp"
                 android:textStyle="bold" />
-            <TextView
-                android:id="@+id/timers"
+            <Button
+                android:id="@+id/endquiz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -43,7 +43,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="00:00:49"
+                android:text="End quiz"
+                android:background="?android:attr/selectableItemBackground"
                 android:textColor="#ffffff"
                 android:textSize="25.0sp"
                 android:textStyle="bold" />
@@ -98,7 +99,7 @@
             android:textStyle="normal|bold"
             android:textAllCaps="true"
             android:textAlignment="viewStart"
-            android:layout_weight="0.20" />
+            android:layout_weight="0.20"/>
 
         <View
             android:layout_width="match_parent"

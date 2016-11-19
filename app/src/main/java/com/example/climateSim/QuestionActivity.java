@@ -1,27 +1,29 @@
 package com.example.climateSim;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Random;
 
 public class QuestionActivity extends Activity {
     List<Question> quesList;
     int score = 0;
-    int qid = 0;
+    //int qid = 0;
+    Random generator = new Random();
+    int qid = generator.nextInt(20);
+    int answered = 0;
 
     Question currentQ;
-    TextView txtQuestion, times, scored;
+    TextView txtQuestion, scored;
     Button button1, button2;
+    Button endquiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class QuestionActivity extends Activity {
         setContentView(R.layout.activity_question);
 
         QuizHelper db = new QuizHelper(this);  // my question bank class
-        quesList = db.getAllQuestions();  // this will fetch all quetonall questions
+        quesList = db.getAllQuestions();  // this will fetch all quiz questions
         currentQ = quesList.get(qid); // the current question
 
         txtQuestion = (TextView) findViewById(R.id.txtQuestion);
@@ -39,20 +41,13 @@ public class QuestionActivity extends Activity {
         // the idea is to set the text of three buttons with the options from question bank
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
+        endquiz = (Button) findViewById(R.id.endquiz);
 
         // the textview in which score will be displayed
         scored = (TextView) findViewById(R.id.score);
 
-        // the timer
-        times = (TextView) findViewById(R.id.timers);
-
-        // method which will set the things up for our game
+        // method which will set the things up for the quiz
         setQuestionView();
-        times.setText("00:02:00");
-
-        // A timer of 60 seconds to play for, with an interval of 1 second (1000 milliseconds)
-        CounterClass timer = new CounterClass(60000, 1000);
-        timer.start();
 
         // button click listeners
         button1.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +55,7 @@ public class QuestionActivity extends Activity {
             public void onClick(View v) {
 
                 // passing the button text to other method
-                // to check whether the anser is correct or not
+                // to check whether the answer is correct or not
                 // same for all three buttons
                 getAnswer(button1.getText().toString());
             }
@@ -73,6 +68,20 @@ public class QuestionActivity extends Activity {
             }
         });
 
+        endquiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // if over do this
+                Intent intent = new Intent(QuestionActivity.this,
+                        ResultActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("score", score); // Your score
+                intent.putExtras(b); // Put your score to your next
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     public void getAnswer(String AnswerString) {
@@ -81,22 +90,22 @@ public class QuestionActivity extends Activity {
             // if conditions matches increase the int (score) by 1
             // and set the text of the score view
             score++;
-            scored.setText("Score : " + score);
+            scored.setText("Score: " + score);
+            //toast
+            Context context = getApplicationContext();
+            CharSequence text = "You have earned a dollar!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         } else {
-
-            // if unlucky start activity and finish the game
-
-            Intent intent = new Intent(QuestionActivity.this,
-                    ResultActivity.class);
-
-            // passing the int value
-            Bundle b = new Bundle();
-            b.putInt("score", score); // Your score
-            intent.putExtras(b); // Put your score to your next
-            startActivity(intent);
-            finish();
+            //toast
+            Context context = getApplicationContext();
+            CharSequence text = "Oops, the answer is incorrect!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
-        if (qid < 10) {
+        if (answered < 5) {
 
             // if questions are not over then do this
             currentQ = quesList.get(qid);
@@ -115,48 +124,15 @@ public class QuestionActivity extends Activity {
 
     }
 
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    @SuppressLint("NewApi")
-    public class CounterClass extends CountDownTimer {
-
-        public CounterClass(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
-            // TODO Auto-generated constructor stub
-        }
-
-        @Override
-        public void onFinish() {
-            times.setText("Time is up");
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished) {
-            // TODO Auto-generated method stub
-
-            long millis = millisUntilFinished;
-            String hms = String.format(
-                    "%02d:%02d:%02d",
-                    TimeUnit.MILLISECONDS.toHours(millis),
-                    TimeUnit.MILLISECONDS.toMinutes(millis)
-                            - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS
-                            .toHours(millis)),
-                    TimeUnit.MILLISECONDS.toSeconds(millis)
-                            - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
-                            .toMinutes(millis)));
-            System.out.println(hms);
-            times.setText(hms);
-        }
-
-    }
-
     private void setQuestionView() {
 
         // the method which will put all things together
         txtQuestion.setText(currentQ.getQUESTION());
         button1.setText(currentQ.getOPTA());
         button2.setText(currentQ.getOPTB());
-
-        qid++;
+        answered ++;
+        Random generator = new Random();
+        qid = generator.nextInt(20);
     }
 
 }
