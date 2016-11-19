@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.media.MediaPlayer;
 
 public class MainActivity extends AppCompatActivity {
+
+    MediaPlayer main_msc;
+
 
     public int totalPollution = 5000;     // 现在污染程度 工厂污染和CHC空间售卖 (total pollution)
     public int totalMoney = 1000;         //现在总金额 (total money)
@@ -43,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        main_msc = MediaPlayer.create(this,R.raw.main_bg_msc);
+        main_msc.setLooping(true);
+        main_msc.start();
+
 
         Intent splash = new Intent(this,Splash.class);
 
@@ -82,14 +89,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    //@Override
+    //protected void onPause(){
+    //   super.onPause();
+    //    main_msc.release();
+    //    finish();
+    //}
 
-
-
-
-    }
+    //@Override
+    //protected void onResume() {
+    //    super.onResume();
+    //}
 
     public void onNextTurn(View v)
     {

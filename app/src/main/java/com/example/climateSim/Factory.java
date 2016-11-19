@@ -1,5 +1,8 @@
 package com.example.climateSim;
 
+import android.media.AudioManager;
+import android.media.SoundPool;
+
 /**
  * Created by 黄波铖 on 2016/11/7.
  */
