@@ -22,7 +22,7 @@ public class ResultActivity extends Activity {
         TextView textResult = (TextView) findViewById(R.id.textResult);
 
 
-        textResult.setText("You have earned " + " " + score + " dollars. ");
+        textResult.setText("You have earned " + " " + score + " k dollars. ");
 
     }
 

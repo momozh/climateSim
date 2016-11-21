@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         main_msc.setLooping(true);
         main_msc.start();
 
+
         Intent splash = new Intent(this,Splash.class);
 
         startActivityForResult(splash,4);
@@ -79,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
         tv_satisfaction = (TextView)findViewById(R.id.i_satisfaction);
         tv_travelIncome = (TextView)findViewById(R.id.i_TravelInome);
 
-        tv_pollution.setText( government.totalPollution + " ug/m^3");
+        tv_pollution.setText( Government.totalPollution + " ug/m^3");
         tv_satisfaction.setText( government.getHappiness() + "%");
         tv_travelIncome.setText(government.calculateTravelIncome(factory.totalInstitutionLevel()) + " k$");
 
         tv_money = (TextView)findViewById(R.id.i_TotalMoney);
-        tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
-        tv_inTurn = (TextView)findViewById(R.id.i_Satisfaction);
+        tv_temperature = (TextView)findViewById(R.id.i_Temperature);
+        tv_inTurn = (TextView)findViewById(R.id.m_inTurn);
 
 
         // Text display
@@ -103,76 +104,62 @@ public class MainActivity extends AppCompatActivity {
     //@Override
     //protected void onResume() {
     //    super.onResume();
-    //    View decorView = getWindow().getDecorView();
-    //    // Hide both the navigation bar and the status bar.
-    //    // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-    //    // a general rule, you should design your app to hide the status bar whenever you
-    //    // hide the navigation bar.
-    //    int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-    //    decorView.setSystemUiVisibility(uiOptions);
     //}
 
     public void onNextTurn(View v)
     {
 
        turnEnd = true;
-        if(turnEnd)
-        {
-            // factory
-            factory.CalculateTurn();   // 结算赚钱和污染
+        // factory
+        factory.CalculateTurn();   // 结算赚钱和污染
 
-            // market
-            //market.ghgPriceChange();
-            market.unitPriceChange(inTurn);
-            market.setUnitPrice(factory.spendingPerUnit);
-            market.ghgPriceChange();
+        // market
+        //market.ghgPriceChange();
+        market.unitPriceChange(inTurn);
+        market.setUnitPrice(Factory.spendingPerUnit);
+        market.ghgPriceChange();
 
-            // 工厂赚的钱，买GHG的钱，卖GHG的钱，升级花费的钱, 旅游收入
-            totalMoney += factory.turnProfit  + government.calculateTravelIncome(factory.totalInstitutionLevel()) - (factory.insiCost[0]+factory.insiCost[1]+factory.insiCost[2]);
+        // 工厂赚的钱，买GHG的钱，卖GHG的钱，升级花费的钱, 旅游收入
+        totalMoney += Factory.turnProfit + government.calculateTravelIncome(factory.totalInstitutionLevel()) - (Factory.insiCost[0]+ Factory.insiCost[1]+ Factory.insiCost[2]);
 
 
-
-            if(factory.turnPollution >= market.notUsedPlace){
-                totalPollution += factory.turnPollution - market.notUsedPlace + market.soldGHG()[1];
-                market.notUsedPlace = 0;
-            }
-            else
-            {
-                market.notUsedPlace -= factory.turnPollution;
-                totalPollution += market.soldGHG()[1];
-            }
-
-            float temp = (float)(Math.log10(totalPollution));
-
-            if(temperature >= 26f)
-            temperature = 23.00f + (float)(Math.round(temp*100))/100;
-
-            totalPollution *= 0.95;
-
-            government.calculateHappiness();
-            turnEnd = false;
-            inTurn ++;
-            turnStart = true;
+        if(Factory.turnPollution >= Market.notUsedPlace){
+            totalPollution += Factory.turnPollution - Market.notUsedPlace + market.soldGHG()[1];
+            Market.notUsedPlace = 0;
         }
-        if(turnStart)
+        else
         {
-            turnStart = false;
-            // factory
-            factory.Init();
-            factory.inputValue(totalMoney,totalPollution,market.getUnitPrice());
-
-            // market
-            market.Init();
-            market.inputValue(totalMoney,totalPollution);
-
-            // government
-            government.Init();
-            government.inputValue(totalMoney,totalPollution);
-
-
-            // Text display
-            UpdateText();
+            Market.notUsedPlace -= Factory.turnPollution;
+            totalPollution += market.soldGHG()[1];
         }
+
+        float temp = (float)(Math.log10(totalPollution));
+
+        if(temperature >= 26f)
+        temperature = 23.00f + (float)(Math.round(temp*100))/100;
+
+        totalPollution *= 0.95;
+
+        government.calculateHappiness();
+        turnEnd = false;
+        inTurn ++;
+        turnStart = true;
+        turnStart = false;
+        // factory
+        factory.Init();
+        factory.inputValue(totalMoney,totalPollution,market.getUnitPrice());
+
+        // market
+        market.Init();
+        market.inputValue(totalMoney,totalPollution);
+
+        // government
+        government.Init();
+        government.inputValue(totalMoney,totalPollution);
+
+
+        // Text display
+        UpdateText();
     }
 
     public void onFactory(View v)
@@ -212,14 +199,14 @@ public class MainActivity extends AppCompatActivity {
         {// back from factory
             //factory.currentUnit = data.getIntExtra("current Unit",factory.currentUnit);
 
-            totalMoney = factory.totalMoney;
+            totalMoney = Factory.totalMoney;
             temperature = data.getFloatExtra("temp_FacToMain",0);
             inTurn = data.getIntExtra("turn_FacToMain",0);
             UpdateText();
         }
         if(resultCode == 7)
         {
-            totalMoney = factory.totalMoney;
+            totalMoney = Factory.totalMoney;
             temperature = data.getFloatExtra("temp_FacToMain",0);
             inTurn = data.getIntExtra("turn_FacToMain",0);
             UpdateText();
@@ -227,8 +214,8 @@ public class MainActivity extends AppCompatActivity {
         }
         if(resultCode == 3)
         {
-            totalMoney = factory.totalMoney;
-            totalPollution = factory.totalPollution;
+            totalMoney = Factory.totalMoney;
+            totalPollution = Factory.totalPollution;
 
             government.inputValue(totalMoney,totalPollution);
 
@@ -240,8 +227,8 @@ public class MainActivity extends AppCompatActivity {
         }
         if(resultCode == 6)
         {
-            totalMoney = factory.totalMoney;
-            totalPollution = factory.totalPollution;
+            totalMoney = Factory.totalMoney;
+            totalPollution = Factory.totalPollution;
 
             government.inputValue(totalMoney,totalPollution);
 
@@ -261,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(resultCode == 5)
         {
-            factory.totalMoney += data.getIntExtra("earnMoney",0);
+            Factory.totalMoney += data.getIntExtra("earnMoney",0);
             totalMoney += data.getIntExtra("earnMoney",0);
             UpdateText();
         }
@@ -269,9 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void UpdateText()
     {
-        totalMoney = factory.totalMoney;
+        totalMoney = Factory.totalMoney;
 
-        ttMoney = totalMoney + " k$";
+        ttMoney = "$"+totalMoney + "k";
         temp = temperature + "°C";
         turn = 2017 + 5 * inTurn +" ";
 

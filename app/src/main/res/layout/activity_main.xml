@@ -4,157 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="com.example.climateSim.MainActivity"
     android:background="@drawable/townhall_bg">
-
-    <TextView
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="Pollution: "
-        android:id="@+id/i_g_pollution"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        android:textColor="@color/whiteColor"
-        android:layout_alignTop="@+id/i_TravelInome"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="Satisfaction: "
-        android:textAlignment="center"
-        android:id="@+id/i_satisfaction"
-        android:textSize="26sp"
-        android:textColor="@color/whiteColor"
-        android:layout_alignTop="@+id/i_g_pollution"
-        android:layout_toStartOf="@+id/i_g_pollution"
-        android:layout_marginEnd="18dp" />
-
-    <TextView
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="Travel: "
-        android:id="@+id/i_TravelInome"
-        android:textSize="26sp"
-        android:textAlignment="center"
-        android:textColor="@color/whiteColor"
-        android:layout_marginBottom="98dp"
-        android:layout_above="@+id/linearLayout6"
-        android:layout_toEndOf="@+id/i_Satisfaction"
-        android:layout_marginStart="18dp" />
-
-
-
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout6"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:weightSum="1">
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="@string/button_factory"
-            android:id="@+id/i_button"
-            android:onClick="onFactory"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="225dp"
-
-            android:alpha="0" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="@string/button_Market"
-            android:id="@+id/i_market"
-            android:onClick="onMarket"
-            android:layout_alignParentBottom="true"
-
-            android:layout_marginLeft="70dp"
-            android:alpha="0" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            android:text="@string/button_government"
-            android:id="@+id/i_government"
-            android:layout_alignTop="@+id/i_button"
-
-            android:layout_marginLeft="70dp"
-            android:alpha="0" />
-
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="@string/button_NextTurn"
-            android:id="@+id/i_nextTurn"
-            android:onClick="onNextTurn"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="70dp"
-            android:alpha="0" />
-    </LinearLayout>
-
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
-        android:id="@+id/textView9"
-        android:textSize="55sp"
+        android:text="@string/quizicon"
+        android:id="@+id/quizicon"
+        android:textSize="24sp"
         android:textColor="@color/whiteColor"
-        android:textStyle="bold"
+        android:textStyle="normal|bold"
         android:onClick="Quiz"
-        android:layout_marginTop="-15dp"
-        android:layout_marginLeft="360dp" />
-
+        android:layout_marginTop="-5dp"
+        android:layout_centerHorizontal="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/inTurn"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:id="@+id/i_Satisfaction"
+        android:textStyle="normal|bold"
+        android:textSize="12sp"
+        android:id="@+id/m_inTurn"
         android:textColor="@color/whiteColor"
-        android:layout_marginStart="450dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-
-        />
-
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TotalMoney"
-        android:textSize="16dp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal|bold"
         android:id="@+id/i_TotalMoney"
         android:textColor="@color/whiteColor"
-        android:layout_marginLeft="250dp"
-
-        android:layout_marginTop="16dp"
-        android:layout_alignParentTop="true"
-        />
-
+        android:layout_marginTop="12dp"
+        android:layout_toStartOf="@id/quizicon"
+        android:layout_marginEnd="25dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Temperature"
-        android:textSize="16dp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal|bold"
         android:textColor="@color/whiteColor"
-        android:id="@+id/i_Temperatur"
+        android:id="@+id/i_Temperature"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/quizicon"
+        android:layout_marginStart="40dp"/>
 
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/i_g_pollution"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@color/whiteColor"
+            android:layout_marginTop="180dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:id="@+id/i_satisfaction"
+            android:textSize="16sp"
+            android:textColor="@color/whiteColor"
+            android:layout_alignTop="@+id/i_g_pollution"
+            android:layout_toStartOf="@+id/i_g_pollution" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/i_TravelInome"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textColor="@color/whiteColor"
+            android:layout_alignTop="@+id/i_g_pollution"
+            android:layout_toEndOf="@+id/i_g_pollution" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="@string/button_Market"
+        android:id="@+id/i_market"
+        android:onClick="onMarket"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"/>
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="@string/button_factory"
+        android:id="@+id/i_factory"
+        android:onClick="onFactory"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/i_market"
+        android:layout_marginEnd="60dp"
+        android:alpha="0" />
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="@string/button_government"
+        android:id="@+id/i_government"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/i_market"
+        android:layout_marginStart="60dp"
+        android:alpha="0"/>
+    <ImageButton
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:text="@string/button_NextTurn"
+        android:id="@+id/i_nextTurn"
+        android:onClick="onNextTurn"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="13dp"/>
+        android:alpha="0" />
 </RelativeLayout>

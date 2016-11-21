@@ -1,255 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.climateSim.A_Market"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-
-    tools:context="com.example.climateSim.A_Market"
     android:background="@drawable/globalmarket_bg">
 
     <TextView
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="Production Price: 30"
-        android:textColor="@color/whiteColor"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="87dp"
-        android:textAlignment="center"
-        android:id="@+id/i_m_unitPrice"
-        android:layout_centerVertical="true"
- />
-
-
-
-
-
-
-
-
-
-
-
-    <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout6"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:weightSum="1">
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="@string/button_factory"
-            android:id="@+id/i_button"
-            android:onClick="onFactory"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="230dp"
-
-            android:alpha="0" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="@string/button_Market"
-            android:id="@+id/i_market"
-            android:layout_alignParentBottom="true"
-
-            android:layout_marginLeft="70dp"
-            android:alpha="0" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            android:text="@string/button_government"
-            android:id="@+id/i_government"
-            android:layout_alignTop="@+id/i_button"
-
-            android:layout_marginLeft="70dp"
-            android:alpha="0"
-            android:onClick="onBack" />
-
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="@string/button_NextTurn"
-            android:id="@+id/i_nextTurn"
-            android:onClick="onNextTurn"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="70dp"
-            android:alpha="0" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
-        android:id="@+id/textView9"
-        android:textSize="55sp"
+        android:text="@string/quizicon"
+        android:id="@+id/quizicon"
+        android:textSize="24sp"
         android:textColor="@color/whiteColor"
-        android:textStyle="bold"
+        android:textStyle="normal|bold"
         android:onClick="Quiz"
-        android:layout_marginTop="-15dp"
-        android:layout_marginLeft="360dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inTurn"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:id="@+id/m_inTurn"
-        android:textColor="@color/whiteColor"
-        android:layout_marginStart="450dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-
-        />
-
+        android:layout_marginTop="-5dp"
+        android:layout_centerHorizontal="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TotalMoney"
-        android:textSize="16dp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal|bold"
         android:id="@+id/m_TotalMoney"
         android:textColor="@color/whiteColor"
-        android:layout_marginLeft="250dp"
-
-        android:layout_marginTop="16dp"
-        android:layout_alignParentTop="true"
-        />
-
+        android:layout_marginTop="12dp"
+        android:layout_toStartOf="@id/quizicon"
+        android:layout_marginEnd="25dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Temperature"
-        android:textSize="16dp"
-        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textStyle="normal|bold"
         android:textColor="@color/whiteColor"
-        android:id="@+id/i_Temperatur"
-
+        android:id="@+id/i_Temperature"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/quizicon"
+        android:layout_marginStart="40dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inTurn"
+        android:textStyle="normal|bold"
+        android:textSize="12sp"
+        android:id="@+id/m_inTurn"
+        android:textColor="@color/whiteColor"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="13dp"/>
+        android:layout_marginEnd="30dp"/>
 
-
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Current Buy Price:
+  $30k/t"
+        android:textColor="@color/whiteColor"
+        android:textStyle="normal|bold"
+        android:textSize="16sp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:textAlignment="center"
+        android:id="@+id/i_m_unitPrice"
+        android:layout_centerVertical="true"/>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="400dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="270dp"
-        android:layout_marginTop="165dp"
-        >
-
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="130dp"
+        android:id="@+id/linearLayout_buyghgtab">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Buy GHG"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textColor="@color/whiteColor"
             android:id="@+id/textView2"
-
-            android:layout_marginLeft="15dp"
- />
-
+            />
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="220dp"
-            android:layout_height="match_parent">
-
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <SeekBar
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/seekBar_buyGHG"
                 android:max="2000"
                 android:progress="0"
-                android:indeterminate="false"
-                android:layout_marginTop="45dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
+                android:indeterminate="false"/>
+            <ImageButton
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:text="Cost: 0 \nUsable GHG place: 0"
-                android:textColor="@color/blackColor"
-                android:id="@+id/i_m_ghgCost"
-                />
-
+                android:text="Buy"
+                android:id="@+id/i_but_buyGHG"
+                android:onClick="onBuy"
+                android:alpha="0" />
         </LinearLayout>
-        <ImageButton
-            android:layout_width="75dp"
-            android:layout_height="40dp"
-            android:text="Buy"
-            android:id="@+id/i_but_buyGHG"
-            android:onClick="onBuy"
-            android:layout_marginTop="45dp"
-            android:alpha="0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost: 0 ; Usable GHG place: 0"
+            android:textColor="@color/whiteColor"
+            android:id="@+id/i_m_ghgCost"/>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="400dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="270dp"
-        android:layout_marginTop="255dp"
-        android:id="@+id/linearLayout7">
-
+        android:layout_alignStart="@id/linearLayout_buyghgtab"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Sold GHG"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/whiteColor"
-
-
-            android:layout_marginLeft="15dp"
-            />
-
+            android:textSize="16sp"
+            android:textColor="@color/whiteColor" />
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="220dp"
-            android:layout_height="match_parent">
-
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <SeekBar
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/seekBar_SellGHG"
                 android:max="2000"
                 android:progress="0"
-                android:indeterminate="false"
-                android:layout_marginTop="45dp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:indeterminate="false" />
+            <ImageButton
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:text="Add Pollution: 0 \n Money income: 0"
-                android:textColor="@color/blackColor"
-                android:id="@+id/i_m_pollutionAdd"
-                />
-
+                android:text="SELL"
+                android:id="@+id/i_but_SellGHG"
+                android:onClick="onSell"
+                android:allowUndo="false"
+                android:alpha="0" />
         </LinearLayout>
-        <ImageButton
-            android:layout_width="75dp"
-            android:layout_height="40dp"
-            android:text="SELL"
-            android:id="@+id/i_but_SellGHG"
-            android:onClick="onSell"
-            android:layout_marginTop="45dp"
-            android:allowUndo="false"
-            android:alpha="0" />
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Pollution: 0 ; Money income: 0"
+            android:id="@+id/i_m_pollutionAdd"
+            android:textColor="@color/whiteColor" />
+        </LinearLayout>
 
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="@string/button_Market"
+        android:id="@+id/i_market"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"/>
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="@string/button_factory"
+        android:id="@+id/i_factory"
+        android:onClick="onFactory"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/i_market"
+        android:layout_marginEnd="60dp"
+        android:alpha="0" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="@string/button_government"
+        android:id="@+id/i_government"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/i_market"
+        android:layout_marginStart="60dp"
+        android:alpha="0"
+        android:onClick="onBack" />
+
+    <ImageButton
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:text="@string/button_NextTurn"
+        android:id="@+id/i_nextTurn"
+        android:onClick="onNextTurn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:alpha="0" />
 </RelativeLayout>

@@ -47,10 +47,10 @@ public class A_Market extends AppCompatActivity {
         market = new Market();
         factory = new Factory();
 
-        totalMoney = factory.totalMoney;
+        totalMoney = Factory.totalMoney;
 
         tv_money = (TextView)findViewById(R.id.m_TotalMoney);
-        tv_temperature = (TextView)findViewById(R.id.i_Temperatur);
+        tv_temperature = (TextView)findViewById(R.id.i_Temperature);
         tv_inTurn = (TextView)findViewById(R.id.m_inTurn);
 
         UpdateText();
@@ -61,20 +61,20 @@ public class A_Market extends AppCompatActivity {
         tv_unitPrice = (TextView)findViewById(R.id.i_m_unitPrice);
         tv_unitPrice.setText("Production Price: \n" + market.getUnitPrice() + " k$/Ton");
 
-        if(market.currUnitGHG >= 50)
-            tv_cost.setText("Cost(90% off): " + market.currUnitGHG * market.ghgBuyPrice * 0.9 + " k$" + "\nUsable GHG place: " + market.currUnitGHG * 10 + " ug/m^3");
-        if(market.currUnitGHG <= 50)
-            tv_cost.setText("Cost: " + market.currUnitGHG * market.ghgBuyPrice+ " k$" + "\nUsable GHG place: " + market.currUnitGHG * 10 + " ug/m^3");
+        if(Market.currUnitGHG >= 50)
+            tv_cost.setText("Cost(90% off): " + Market.currUnitGHG * Market.ghgBuyPrice * 0.9 + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
+        if(Market.currUnitGHG <= 50)
+            tv_cost.setText("Cost: " + Market.currUnitGHG * Market.ghgBuyPrice + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
 
-        tv_sold.setText("Add Pollution: " + market.currUnitSoldGHG * 30 + " ug/m^3" + "\nMoney income: " + market.currUnitSoldGHG * market.ghgSoldPrice +" k$");
+        tv_sold.setText("Add Pollution: " + Market.currUnitSoldGHG * 30 + " ug/m^3" + "\nMoney income: " + Market.currUnitSoldGHG * Market.ghgSoldPrice +" k$");
 
         sb_buy = (SeekBar)findViewById(R.id.seekBar_buyGHG);
-        sb_buy.setMax(factory.totalMoney/market.ghgBuyPrice);
-        sb_buy.setProgress(market.currUnitGHG);
+        sb_buy.setMax(Factory.totalMoney / Market.ghgBuyPrice);
+        sb_buy.setProgress(Market.currUnitGHG);
 
         sb_sold = (SeekBar)findViewById(R.id.seekBar_SellGHG);
         sb_sold.setMax(80);
-        sb_sold.setProgress(market.currUnitSoldGHG);
+        sb_sold.setProgress(Market.currUnitSoldGHG);
 
         sb_buy.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -92,12 +92,12 @@ public class A_Market extends AppCompatActivity {
 
             public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
                 // TODO Auto-generated method stub
-                  if(!market.bought && !market.sold){
-                    market.currUnitGHG = progress;
-                      if(market.currUnitGHG >= 50)
-                          tv_cost.setText("Cost(90% off): " + market.currUnitGHG * market.ghgBuyPrice * 0.9 + " k$" + "\nUsable GHG place: " + market.currUnitGHG * 10 + " ug/m^3");
-                      if(market.currUnitGHG <= 50)
-                          tv_cost.setText("Cost: " + market.currUnitGHG * market.ghgBuyPrice+ " k$" + "\nUsable GHG place: " + market.currUnitGHG * 10 + " ug/m^3");
+                  if(!Market.bought && !Market.sold){
+                    Market.currUnitGHG = progress;
+                      if(Market.currUnitGHG >= 50)
+                          tv_cost.setText("Cost(90% off): " + Market.currUnitGHG * Market.ghgBuyPrice * 0.9 + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
+                      if(Market.currUnitGHG <= 50)
+                          tv_cost.setText("Cost: " + Market.currUnitGHG * Market.ghgBuyPrice + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
                   }
 
             }
@@ -119,9 +119,9 @@ public class A_Market extends AppCompatActivity {
 
             public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
                 // TODO Auto-generated method stub
-                if(!market.bought && !market.sold){
-                    market.currUnitSoldGHG = progress;
-                    tv_sold.setText("Add Pollution: " + market.currUnitSoldGHG * 30 + " ug/m^3" + "\nMoney income: " + market.currUnitSoldGHG * market.ghgSoldPrice +" k$");
+                if(!Market.bought && !Market.sold){
+                    Market.currUnitSoldGHG = progress;
+                    tv_sold.setText("Add Pollution: " + Market.currUnitSoldGHG * 30 + " ug/m^3" + "\nMoney income: " + Market.currUnitSoldGHG * Market.ghgSoldPrice +" k$");
 
                 }
 
@@ -132,14 +132,14 @@ public class A_Market extends AppCompatActivity {
     public void onBuy(View v)
     {
 
-        if(!market.bought && market.currUnitGHG != 0)
+        if(!Market.bought && Market.currUnitGHG != 0)
         {
-            market.bought = true;
-            market.sold =true;
-            market.currUnitSoldGHG = 0;
+            Market.bought = true;
+            Market.sold =true;
+            Market.currUnitSoldGHG = 0;
 
 
-            factory.totalMoney -= market.buyGHG();
+            Factory.totalMoney -= market.buyGHG();
 
             UpdateText();
         }
@@ -147,14 +147,14 @@ public class A_Market extends AppCompatActivity {
 
     public void onSell(View v)
     {
-        if(!market.sold && market.currUnitSoldGHG != 0)
+        if(!Market.sold && Market.currUnitSoldGHG != 0)
         {
-            market.sold = true;
-            market.bought = true;
-            market.currUnitGHG = 0;
+            Market.sold = true;
+            Market.bought = true;
+            Market.currUnitGHG = 0;
 
-            factory.totalMoney += market.soldGHG()[0];
-            factory.totalPollution += market.soldGHG()[1];
+            Factory.totalMoney += market.soldGHG()[0];
+            Factory.totalPollution += market.soldGHG()[1];
 
             UpdateText();
         }
@@ -162,7 +162,7 @@ public class A_Market extends AppCompatActivity {
 
     public void onBack(View v)
     {
-        if(!market.bought && !market.sold)
+        if(!Market.bought && !Market.sold)
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Attention");
@@ -208,25 +208,65 @@ public class A_Market extends AppCompatActivity {
 
     }
 
+    public void onFactory(View v)
+    {
+        if(!Market.bought && !Market.sold)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Attention");
+            builder.setMessage("You haven't bought or sold, sure to leave?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    dialogInterface.dismiss();
+
+                    Intent intent = new Intent();
+                    // i.putExtra("current Unit",factory.currentUnit);
+                    intent.putExtra("temp_FacToMar",temperature);
+                    intent.putExtra("turn_FacToMar",inTurn);
+                    setResult(2,intent);
+
+                    finish();
+
+                }
+            });
+
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    dialogInterface.dismiss();
+
+                }
+            });
+
+            builder.create().show();
+        }
+        else {
+            Intent i = new Intent();
+            // i.putExtra("current Unit",factory.currentUnit);
+            i.putExtra("temp_FacToMar",temperature);
+            i.putExtra("turn_FacToMar",inTurn);
+            setResult(2,i);
+            finish();
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 5) {
-            factory.totalMoney += data.getIntExtra("earnMoney", 0);
+            Factory.totalMoney += data.getIntExtra("earnMoney", 0);
             totalMoney += data.getIntExtra("earnMoney",0);
             UpdateText();
         }
     }
     public void UpdateText()
     {
-        totalMoney = factory.totalMoney;
-
+        totalMoney = Factory.totalMoney;
         ttMoney = totalMoney + " k$";
         temp = temperature + "°C";
         turn = 2017 + 5 * inTurn +" ";
-
-
-
         tv_money.setText(ttMoney);
         tv_temperature.setText(temp);
         tv_inTurn.setText(turn);
@@ -241,7 +281,7 @@ public class A_Market extends AppCompatActivity {
 
     public void onNextTurn(View v)
     {
-        if(!market.bought && !market.sold)
+        if(!Market.bought && !Market.sold)
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Attention");

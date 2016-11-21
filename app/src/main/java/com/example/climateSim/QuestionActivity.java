@@ -95,7 +95,7 @@ public class QuestionActivity extends Activity {
             scored.setText("Score: " + score);
             //toast
             Context context = getApplicationContext();
-            CharSequence text = "You have earned a dollar!";
+            CharSequence text = "You have earned 1k dollar!";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
