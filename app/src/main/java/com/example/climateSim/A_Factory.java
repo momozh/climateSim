@@ -62,7 +62,7 @@ public class A_Factory extends AppCompatActivity {
         factory = new Factory();
         market = new Market();
 
-        totalMoney = Factory.totalMoney;
+        totalMoney = factory.totalMoney;
         temperature = i.getFloatExtra("temp_MainToFac",26.6f);
         inTurn = i.getIntExtra("turn_MainToFac",2022);
 
@@ -82,13 +82,13 @@ public class A_Factory extends AppCompatActivity {
         progressBar3.setProgress(factory.institutionLevel[2]);*/
 
         tv_up2Cost = (TextView)findViewById(R.id.i_up1_cost2);
-        tv_up2Cost.setText("Level" + Factory.institutionLevel[1] +" Cost: " + Factory.institutionSpending[1]+ "k$");
+        tv_up2Cost.setText("Level" + Factory.institutionLevel[1] +" Cost: $" + Factory.institutionSpending[1]+ "k");
 
         tv_up1Cost = (TextView)findViewById(R.id.i_up1_cost);
-        tv_up1Cost.setText("Level" + Factory.institutionLevel[0] +" Cost: " + Factory.institutionSpending[0] + "k$");
+        tv_up1Cost.setText("Level" + Factory.institutionLevel[0] +" Cost: $" + Factory.institutionSpending[0] + "k");
 
         tv_up3Cost = (TextView)findViewById(R.id.i_up1_cost3);
-        tv_up3Cost.setText("Level" + Factory.institutionLevel[2] +" Cost: " + Factory.institutionSpending[2]+ "k$" );
+        tv_up3Cost.setText("Level" + Factory.institutionLevel[2] +" Cost: $" + Factory.institutionSpending[2]+ "k" );
 
         sb_buy = (SeekBar)this.findViewById(R.id.i_unitBar);
         sb_buy.setMax(factory.getUnit());
@@ -99,7 +99,7 @@ public class A_Factory extends AppCompatActivity {
 
         tv_curUnit.setText("Current: " + Factory.currentUnit +   " Ton");
         tv_max.setText("Max: " + factory.getUnit() +   " Ton");
-        tv_cost.setText("Profit: " + Factory.currentUnit * (Factory.profitPerUnit - Factory.spendingPerUnit)+ "k$" +"\nPollution: " + Factory.currentUnit * Factory.pollutionPerUnit + " ug/m^3"
+        tv_cost.setText("Profit: $" + Factory.currentUnit * (Factory.profitPerUnit - Factory.spendingPerUnit)+ "k" +"\nPollution: " + factory.currentUnit * factory.pollutionPerUnit + " ug/m^3"
             + "\nNot used GHG place: " + Market.notUsedPlace + " ug/m^3"
         );
 
@@ -118,7 +118,6 @@ public class A_Factory extends AppCompatActivity {
         {   // go back from market
             Intent i = new Intent();
 
-
             i.putExtra("temp_MarToMain",data.getFloatExtra("temp_MarToMain",0));
             i.putExtra("turn_MarToMain",data.getIntExtra("turn_MarToMain",0));
             setResult(3,i);
@@ -128,7 +127,6 @@ public class A_Factory extends AppCompatActivity {
         if(resultCode == 4) // market next turn
         {
             Intent i = new Intent();
-
 
             i.putExtra("temp_MarToMain",data.getFloatExtra("temp_MarToMain",0));
             i.putExtra("turn_MarToMain",data.getIntExtra("turn_MarToMain",0));
@@ -176,7 +174,7 @@ public class A_Factory extends AppCompatActivity {
                 Factory.currentUnit = progress;
                 tv_curUnit.setText("Current: " + Factory.currentUnit +   " Ton");
                 tv_max.setText("Max: " + factory.getUnit() +   " Ton");
-                tv_cost.setText("Profit: " + Factory.currentUnit * (Factory.profitPerUnit - Factory.spendingPerUnit)+ "k$" +"\nPollution: " + Factory.currentUnit * Factory.pollutionPerUnit + " ug/m^3"
+                tv_cost.setText("Profit: $" + Factory.currentUnit * (Factory.profitPerUnit - Factory.spendingPerUnit)+ "k" +"\nPollution: " + Factory.currentUnit * Factory.pollutionPerUnit + " ug/m^3"
                         + "\nNot used GHG place: " + Market.notUsedPlace + " ug/m^3");
             }
         });
@@ -185,7 +183,6 @@ public class A_Factory extends AppCompatActivity {
     public void onBack(View v)
     {
         Intent i = new Intent();
-
 
         i.putExtra("temp_FacToMain",temperature);
         i.putExtra("turn_FacToMain",inTurn);
@@ -212,18 +209,17 @@ public class A_Factory extends AppCompatActivity {
                 dialogInterface.dismiss();
 
                 factory.levelUp_Type1();
-                tv_up1Cost.setText("Level" + Factory.institutionLevel[0] +" Cost: " + Factory.institutionSpending[0] + " k$");
+                tv_up1Cost.setText("Level" + Factory.institutionLevel[0] +" Cost: $" + Factory.institutionSpending[0] + " k");
+                Factory.totalMoney -= Factory.institutionSpending[0];
                 //progressBar1.setProgress(factory.institutionLevel[0]);
-
+                UpdateText();
             }
         });
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
                 dialogInterface.dismiss();
-
             }
         });
 
@@ -242,18 +238,17 @@ public class A_Factory extends AppCompatActivity {
                 dialogInterface.dismiss();
 
                 factory.levelUp_Type2();
-                tv_up2Cost.setText("Level" + Factory.institutionLevel[1] +" Cost: " + Factory.institutionSpending[1] + " k$");
+                tv_up2Cost.setText("Level" + Factory.institutionLevel[1] +" Cost: $" + Factory.institutionSpending[1] + " k");
+                Factory.totalMoney -= Factory.institutionSpending[1];
                 //progressBar2.setProgress(factory.institutionLevel[1]);
-
+                UpdateText();
             }
         });
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
                 dialogInterface.dismiss();
-
             }
         });
 
@@ -264,7 +259,7 @@ public class A_Factory extends AppCompatActivity {
     public void onLevelUp3(View v)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Institution23");
+        builder.setTitle("Institution3");
         builder.setMessage("Deduct pollution in each production\nLightly increase profit in each production");
         builder.setPositiveButton("Upgrade", new DialogInterface.OnClickListener(){
             @Override
@@ -273,30 +268,26 @@ public class A_Factory extends AppCompatActivity {
                 dialogInterface.dismiss();
 
                 factory.levelUp_Type3();
-                tv_up3Cost.setText("Level" + Factory.institutionLevel[2] +" Cost: " + Factory.institutionSpending[2] + " k$");
+                tv_up3Cost.setText("Level" + Factory.institutionLevel[2] +" Cost: $" + Factory.institutionSpending[2] + " k");
+                Factory.totalMoney -= Factory.institutionSpending[2];
                 //progressBar3.setProgress(factory.institutionLevel[2]);
-
+                UpdateText();
             }
         });
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
                 dialogInterface.dismiss();
-
             }
         });
 
         builder.create().show();
-
-
     }
 
     public void onNextTurn(View v)
     {
         Intent i = new Intent();
-
 
         i.putExtra("temp_FacToMain",temperature);
         i.putExtra("turn_FacToMain",inTurn);
@@ -317,11 +308,9 @@ public class A_Factory extends AppCompatActivity {
     {
         totalMoney = Factory.totalMoney;
 
-        ttMoney = totalMoney + " k$";
+        ttMoney = "$"+totalMoney + "k";
         temp = temperature + "°C";
         turn = 2017 + 5 * inTurn +" ";
-
-
 
         tv_money.setText(ttMoney);
         tv_temperature.setText(temp);

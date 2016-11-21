@@ -59,14 +59,14 @@ public class A_Market extends AppCompatActivity {
         tv_sold = (TextView)findViewById(R.id.i_m_pollutionAdd);
 
         tv_unitPrice = (TextView)findViewById(R.id.i_m_unitPrice);
-        tv_unitPrice.setText("Production Price: \n" + market.getUnitPrice() + " k$/Ton");
+        tv_unitPrice.setText("Current Buy Price: \n$" + market.getUnitPrice() + " k/Ton");
 
         if(Market.currUnitGHG >= 50)
-            tv_cost.setText("Cost(90% off): " + Market.currUnitGHG * Market.ghgBuyPrice * 0.9 + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
+            tv_cost.setText("Cost(90% off): $" + Market.currUnitGHG * Market.ghgBuyPrice * 0.9 + " k" + " ; Usable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
         if(Market.currUnitGHG <= 50)
-            tv_cost.setText("Cost: " + Market.currUnitGHG * Market.ghgBuyPrice + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
+            tv_cost.setText("Cost: $" + Market.currUnitGHG * Market.ghgBuyPrice + " k" + " ; Usable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
 
-        tv_sold.setText("Add Pollution: " + Market.currUnitSoldGHG * 30 + " ug/m^3" + "\nMoney income: " + Market.currUnitSoldGHG * Market.ghgSoldPrice +" k$");
+        tv_sold.setText("Add Pollution: " + Market.currUnitSoldGHG * 30 + " ug/m^3" + " ; Money income: $" + Market.currUnitSoldGHG * Market.ghgSoldPrice +" k");
 
         sb_buy = (SeekBar)findViewById(R.id.seekBar_buyGHG);
         sb_buy.setMax(Factory.totalMoney / Market.ghgBuyPrice);
@@ -95,9 +95,9 @@ public class A_Market extends AppCompatActivity {
                   if(!Market.bought && !Market.sold){
                     Market.currUnitGHG = progress;
                       if(Market.currUnitGHG >= 50)
-                          tv_cost.setText("Cost(90% off): " + Market.currUnitGHG * Market.ghgBuyPrice * 0.9 + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
+                          tv_cost.setText("Cost(90% off): $" + Market.currUnitGHG * Market.ghgBuyPrice * 0.9 + " k" + " ; Usable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
                       if(Market.currUnitGHG <= 50)
-                          tv_cost.setText("Cost: " + Market.currUnitGHG * Market.ghgBuyPrice + " k$" + "\nUsable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
+                          tv_cost.setText("Cost: $" + Market.currUnitGHG * Market.ghgBuyPrice + " k" + " ; Usable GHG place: " + Market.currUnitGHG * 10 + " ug/m^3");
                   }
 
             }
@@ -121,7 +121,7 @@ public class A_Market extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 if(!Market.bought && !Market.sold){
                     Market.currUnitSoldGHG = progress;
-                    tv_sold.setText("Add Pollution: " + Market.currUnitSoldGHG * 30 + " ug/m^3" + "\nMoney income: " + Market.currUnitSoldGHG * Market.ghgSoldPrice +" k$");
+                    tv_sold.setText("Add Pollution: " + Market.currUnitSoldGHG * 30 + " ug/m^3" + " ; Money income: $" + Market.currUnitSoldGHG * Market.ghgSoldPrice +" k");
 
                 }
 
@@ -264,7 +264,7 @@ public class A_Market extends AppCompatActivity {
     public void UpdateText()
     {
         totalMoney = Factory.totalMoney;
-        ttMoney = totalMoney + " k$";
+        ttMoney = "$"+totalMoney + "k";
         temp = temperature + "°C";
         turn = 2017 + 5 * inTurn +" ";
         tv_money.setText(ttMoney);

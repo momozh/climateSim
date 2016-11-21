@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         tv_pollution.setText( Government.totalPollution + " ug/m^3");
         tv_satisfaction.setText( government.getHappiness() + "%");
-        tv_travelIncome.setText(government.calculateTravelIncome(factory.totalInstitutionLevel()) + " k$");
+        tv_travelIncome.setText("$"+government.calculateTravelIncome(factory.totalInstitutionLevel()) + " k");
 
         tv_money = (TextView)findViewById(R.id.i_TotalMoney);
         tv_temperature = (TextView)findViewById(R.id.i_Temperature);

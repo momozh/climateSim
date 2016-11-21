@@ -57,7 +57,7 @@
   $30k/t"
         android:textColor="@color/whiteColor"
         android:textStyle="normal|bold"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="50dp"
         android:textAlignment="center"
@@ -78,7 +78,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Buy GHG"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/whiteColor"
             android:id="@+id/textView2"
             />
@@ -106,6 +106,7 @@
             android:layout_height="wrap_content"
             android:text="Cost: 0 ; Usable GHG place: 0"
             android:textColor="@color/whiteColor"
+            android:textSize="12sp"
             android:id="@+id/i_m_ghgCost"/>
     </LinearLayout>
 
@@ -122,7 +123,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Sold GHG"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/whiteColor" />
         <LinearLayout
             android:orientation="horizontal"
@@ -149,7 +150,8 @@
             android:layout_height="wrap_content"
             android:text="Add Pollution: 0 ; Money income: 0"
             android:id="@+id/i_m_pollutionAdd"
-            android:textColor="@color/whiteColor" />
+            android:textColor="@color/whiteColor"
+            android:textSize="12sp"/>
         </LinearLayout>
 
     <ImageButton
