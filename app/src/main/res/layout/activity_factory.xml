@@ -1,24 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.climateSim.A_Factory"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-
-    tools:context="com.example.climateSim.A_Factory"
     android:background="@drawable/factory_bg">
-
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout4"
-        android:layout_alignBottom="@+id/i_maxUnit">
+        android:id="@+id/factory_upbar">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TotalMoney"
+            android:textSize="16sp"
+            android:textStyle="normal|bold"
+            android:id="@+id/f_TotalMoney"
+            android:textColor="@color/whiteColor"
+            android:layout_marginStart="213dp"
+            android:layout_alignBaseline="@+id/f_turn"
+            android:layout_alignBottom="@+id/f_turn"
+            android:layout_alignEnd="@+id/linearLayout8"
+            android:layout_marginEnd="37dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Temperature"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/whiteColor"
+            android:id="@+id/f_Temperature"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="13dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inTurn"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:id="@+id/f_turn"
+            android:textColor="@color/whiteColor"
+            android:layout_marginStart="450dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/textView9"
+            android:textSize="55sp"
+            android:textColor="@color/whiteColor"
+            android:textStyle="bold"
+            android:onClick="Quiz"
+            android:layout_marginTop="-15dp"
+            android:layout_marginLeft="360dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,126 +111,18 @@
             android:layout_marginLeft="3dp"
              />
 
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MaxUnit"
-        android:textColor="@color/whiteColor"
-        android:textSize="18dp"
-        android:id="@+id/i_maxUnit"
-        android:layout_alignTop="@+id/linearLayout5"
-        android:layout_marginTop="19dp"
-        android:layout_toEndOf="@+id/linearLayout5" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout6"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:weightSum="1">
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="@string/button_factory"
-            android:id="@+id/i_button"
-            android:onClick="onFactory"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="230dp"
-
-            android:alpha="0" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="@string/button_Market"
-            android:id="@+id/i_market"
-            android:onClick="onMarket"
-            android:layout_alignParentBottom="true"
-
-            android:layout_marginLeft="70dp"
-            android:alpha="0" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            android:text="@string/button_government"
-            android:id="@+id/i_government"
-            android:layout_alignTop="@+id/i_button"
-
-            android:layout_marginLeft="70dp"
-            android:alpha="0"
-            android:onClick="onBack" />
-
-        <ImageButton
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="@string/button_NextTurn"
-            android:id="@+id/i_nextTurn"
-            android:onClick="onNextTurn"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="70dp"
-            android:alpha="0" />
+            android:layout_height="wrap_content"
+            android:text="MaxUnit"
+            android:textColor="@color/whiteColor"
+            android:textSize="18dp"
+            android:id="@+id/i_maxUnit"
+            android:layout_alignTop="@+id/linearLayout5"
+            android:layout_marginTop="19dp"
+            android:layout_toEndOf="@+id/linearLayout5" />
+
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
-        android:id="@+id/textView9"
-        android:textSize="55sp"
-        android:textColor="@color/whiteColor"
-        android:textStyle="bold"
-        android:onClick="Quiz"
-        android:layout_marginTop="-15dp"
-        android:layout_marginLeft="360dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inTurn"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:id="@+id/f_turn"
-        android:textColor="@color/whiteColor"
-        android:layout_marginStart="450dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/TotalMoney"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:id="@+id/f_TotalMoney"
-        android:textColor="@color/whiteColor"
-        android:layout_marginLeft="250dp"
-
-        android:layout_marginTop="16dp"
-        android:layout_alignParentTop="true"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Temperature"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:textColor="@color/whiteColor"
-        android:id="@+id/f_Temperature"
-
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="13dp"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -219,10 +159,7 @@
                 android:textColor="@color/whiteColor"
                 android:id="@+id/i_up1"
                 android:textSize="18sp"
-                android:layout_marginLeft="12dp"
-
-                />
-
+                android:layout_marginLeft="12dp" />
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -293,6 +230,63 @@
                 android:layout_marginTop="3dp"
                 android:onClick="onLevelUp3"
                 android:alpha="0" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout6"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:weightSum="1">
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:text="@string/button_factory"
+                    android:id="@+id/i_button"
+                    android:onClick="onFactory"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="230dp"
+
+                    android:alpha="0" />
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:text="@string/button_Market"
+                    android:id="@+id/i_market"
+                    android:onClick="onMarket"
+                    android:layout_alignParentBottom="true"
+
+                    android:layout_marginLeft="70dp"
+                    android:alpha="0" />
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+
+                    android:text="@string/button_government"
+                    android:id="@+id/i_government"
+                    android:layout_alignTop="@+id/i_button"
+
+                    android:layout_marginLeft="70dp"
+                    android:alpha="0"
+                    android:onClick="onBack" />
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="@string/button_NextTurn"
+                    android:id="@+id/i_nextTurn"
+                    android:onClick="onNextTurn"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="70dp"
+                    android:alpha="0" />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

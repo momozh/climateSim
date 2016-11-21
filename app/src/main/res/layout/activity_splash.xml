@@ -14,9 +14,9 @@
         app:srcCompat="@drawable/splashscreen_icon"
         android:id="@+id/splash_imgview"
         android:contentDescription="@string/splash_imgview"
-        android:layout_width="256dp"
-        android:layout_height="256dp"
-        android:layout_marginStart="128dp"
+        android:layout_width="207dp"
+        android:layout_height="207dp"
+        android:layout_marginStart="80dp"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:onClick="Back"/>
@@ -26,12 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/splash_title"
-        android:textColor="@color/colorsplash_font"
+        android:textColor="@color/splash_fontcolor"
         android:textStyle="normal|bold"
         android:textSize="32sp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:layout_toEndOf="@+id/splash_imgview"
-        android:layout_marginStart="42.667dp" />
+        android:layout_marginStart="28dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -45,17 +45,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/splash_heading"
-            android:textColor="@color/colorsplash_font"
+            android:textColor="@color/splash_fontcolor"
             android:textSize="32sp"/>
 
         <EditText
             android:text="@string/splash_cityname"
-            android:layout_width="176dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/splash_cityname"
             android:inputType="textCapWords"
             android:hint="@string/splash_citynamehint"
-            android:textColor="@color/colorsplash_font"
+            android:textColor="@color/splash_fontcolor"
             android:textSize="32sp"
             android:textStyle="normal|italic"/>
 

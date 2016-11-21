@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="colorsplash_font">#492F91</color>
+    <color name="splash_fontcolor">#492F91</color>
     <color name="gradient_startColor">#FFFAC1</color>
     <color name="gradient_endColor">#96DAF8</color>
 

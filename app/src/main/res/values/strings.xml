@@ -11,7 +11,7 @@
 
     <string name="splash_imgview">Smart Cities App logo</string>
     <string name="splash_title">Smart Cities - </string>
-    <string name="splash_heading">Smart ∙ </string>
+    <string name="splash_heading">Smart ∙</string>
     <string name="splash_cityname">Hong Kong</string>
     <string name="splash_citynamehint">Where do you live?</string>
 </resources>
