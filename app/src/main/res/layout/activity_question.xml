@@ -18,9 +18,9 @@
 
         //score and time
         <LinearLayout
-            android:layout_width="740dp"
             android:layout_height="56dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_width="595dp">
             <TextView
                 android:id="@+id/score"
                 android:layout_width="match_parent"
@@ -86,7 +86,6 @@
         //question
         <TextView
             android:id="@+id/txtQuestion"
-            android:layout_width="698dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
@@ -95,11 +94,12 @@
             android:textColor="@android:color/holo_green_dark"
             android:gravity="start"
             android:text="About how much of Earth’s surface is covered by clouds at any given time?"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="normal|bold"
             android:textAllCaps="true"
             android:textAlignment="viewStart"
-            android:layout_weight="0.20"/>
+            android:layout_weight="0.20"
+            android:layout_width="560dp" />
 
         <View
             android:layout_width="match_parent"
