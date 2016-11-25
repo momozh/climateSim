@@ -50,110 +50,117 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="30dp"/>
 
-            <LinearLayout
-                android:orientation="vertical"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:layout_marginStart="98dp"
+        android:id="@+id/factory_techtab">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout_up1"
+            android:weightSum="1">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="28dp"
+                android:text="Lv. UP"
+                android:id="@+id/i_buLvUp"
+                android:onClick="onLevelUp1"
+                android:alpha="0" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="135dp"
-                android:layout_marginStart="100dp"
-                android:id="@+id/factory_techtab">
+                android:text="UP1"
+                android:textStyle="normal|bold"
+                android:textColor="@color/whiteColor"
+                android:id="@+id/i_up1"
+                android:textSize="12sp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost: "
+            android:textColor="@color/whiteColor"
+            android:textSize="8sp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/i_up1_cost" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout_up1"
-                    android:weightSum="1">
-                    <Button
-                        android:layout_width="80dp"
-                        android:layout_height="30dp"
-                        android:text="Lv. UP"
-                        android:id="@+id/i_buLvUp"
-                        android:onClick="onLevelUp1"
-                        android:alpha="0" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UP1"
-                        android:textStyle="normal|bold"
-                        android:textColor="@color/whiteColor"
-                        android:id="@+id/i_up1"
-                        android:textSize="12sp"
-                        android:layout_marginStart="6dp" />
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cost: "
-                    android:textColor="@color/whiteColor"
-                    android:textSize="8sp"
-                    android:layout_marginStart="5dp"
-                    android:id="@+id/i_up1_cost" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout_up2"
+            android:weightSum="1">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="28dp"
+                android:text="Lv. UP"
+                android:id="@+id/i_buLvUp2"
+                android:onClick="onLevelUp2"
+                android:layout_marginTop="-2dp"
+                android:alpha="0" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout_up2"
-                    android:weightSum="1">
-                    <Button
-                        android:layout_width="80dp"
-                        android:layout_height="30dp"
-                        android:text="Lv. UP"
-                        android:id="@+id/i_buLvUp2"
-                        android:onClick="onLevelUp2"
-                        android:alpha="0" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UP2"
-                        android:textStyle="bold"
-                        android:textColor="@color/whiteColor"
-                        android:textSize="12sp"
-                        android:layout_marginStart="6dp"
-                        android:id="@+id/i_up2" />
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cost: "
-                    android:textColor="@color/whiteColor"
-                    android:textSize="8sp"
-                    android:layout_marginStart="5dp"
-                    android:id="@+id/i_up1_cost2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UP2"
+                android:textStyle="bold"
+                android:textColor="@color/whiteColor"
+                android:textSize="12sp"
+                android:layout_marginTop="-6dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/i_up2" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost: "
+            android:textColor="@color/whiteColor"
+            android:textSize="8sp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/i_up1_cost2" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout3"
-                    android:weightSum="1">
-                    <Button
-                        android:layout_width="80dp"
-                        android:layout_height="30dp"
-                        android:text="Lv. UP"
-                        android:id="@+id/button"
-                        android:onClick="onLevelUp3"
-                        android:alpha="0" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UP3"
-                        android:textColor="@color/whiteColor"
-                        android:textSize="12sp"
-                        android:layout_marginStart="6dp"
-                        android:textStyle="bold"
-                        android:id="@+id/i_up3"/>
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cost: "
-                    android:textColor="@color/whiteColor"
-                    android:textSize="8sp"
-                    android:layout_marginStart="5dp"
-                    android:id="@+id/i_up1_cost3" />
-            </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout3"
+            android:weightSum="1">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="28dp"
+                android:text="Lv. UP"
+                android:id="@+id/button"
+                android:onClick="onLevelUp3"
+                android:layout_marginTop="-1dp"
+                android:alpha="0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UP3"
+                android:textColor="@color/whiteColor"
+                android:textSize="12sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="-5dp"
+                android:textStyle="bold"
+                android:id="@+id/i_up3"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cost: "
+            android:textColor="@color/whiteColor"
+            android:textSize="8sp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/i_up1_cost3" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -162,7 +169,7 @@
         android:id="@+id/linearLayout_factory"
         android:layout_alignParentTop="true"
         android:layout_marginTop="130dp"
-        android:layout_toEndOf="@id/factory_techtab">
+        android:layout_marginStart="240dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -224,4 +231,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:alpha="0" />
+
 </RelativeLayout>
