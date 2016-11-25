@@ -200,7 +200,7 @@ public class A_Factory extends AppCompatActivity {
     public void onLevelUp1(View v)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Institution1");
+        builder.setTitle("Study production line and Automate the factory");
         builder.setMessage("Increase profit and pollution in each production");
         builder.setPositiveButton("Upgrade", new DialogInterface.OnClickListener(){
             @Override
@@ -229,7 +229,7 @@ public class A_Factory extends AppCompatActivity {
     public void onLevelUp2(View v)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Institution2");
+        builder.setTitle("Better Purchasing Source Manager");
         builder.setMessage("Increase maximum production \nLightly deduct spending in each production");
         builder.setPositiveButton("Upgrade", new DialogInterface.OnClickListener(){
             @Override
@@ -259,7 +259,7 @@ public class A_Factory extends AppCompatActivity {
     public void onLevelUp3(View v)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Institution3");
+        builder.setTitle("Conserving energy and Fossil Fuels");
         builder.setMessage("Deduct pollution in each production\nLightly increase profit in each production");
         builder.setPositiveButton("Upgrade", new DialogInterface.OnClickListener(){
             @Override

@@ -17,17 +17,7 @@
         android:onClick="Quiz"
         android:layout_marginTop="-5dp"
         android:layout_centerHorizontal="true"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/TotalMoney"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        android:id="@+id/f_TotalMoney"
-        android:textColor="@color/whiteColor"
-        android:layout_marginTop="12dp"
-        android:layout_toStartOf="@id/quizicon"
-        android:layout_marginEnd="25dp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,9 +26,23 @@
         android:textStyle="normal|bold"
         android:textColor="@color/whiteColor"
         android:id="@+id/f_Temperature"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/quizicon"
         android:layout_marginStart="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TotalMoney"
+        android:textSize="12sp"
+        android:textStyle="normal|bold"
+        android:id="@+id/f_TotalMoney"
+        android:textColor="@color/whiteColor"
+        android:layout_marginEnd="11dp"
+        android:layout_alignBaseline="@+id/f_Temperature"
+        android:layout_alignBottom="@+id/f_Temperature"
+        android:layout_toStartOf="@+id/i_market" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -168,7 +172,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout_factory"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="140dp"
         android:layout_marginStart="240dp">
         <TextView
             android:layout_width="wrap_content"
@@ -231,5 +235,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:alpha="0" />
+
+
 
 </RelativeLayout>

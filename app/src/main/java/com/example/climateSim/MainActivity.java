@@ -263,6 +263,9 @@ public class MainActivity extends AppCompatActivity {
         turn = 2017 + 5 * inTurn +" ";
 
 
+        tv_pollution.setText( Government.totalPollution + " ug/m^3");
+        tv_satisfaction.setText( government.getHappiness() + "%");
+        tv_travelIncome.setText("$"+government.calculateTravelIncome(factory.totalInstitutionLevel()) + " k");
 
         tv_money.setText(ttMoney);
         tv_temperature.setText(temp);

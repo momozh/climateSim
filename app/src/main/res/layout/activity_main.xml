@@ -35,7 +35,7 @@
         android:textStyle="normal|bold"
         android:id="@+id/i_TotalMoney"
         android:textColor="@color/whiteColor"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:layout_toStartOf="@id/quizicon"
         android:layout_marginEnd="25dp"/>
     <TextView
@@ -46,7 +46,7 @@
         android:textStyle="normal|bold"
         android:textColor="@color/whiteColor"
         android:id="@+id/i_Temperature"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/quizicon"
         android:layout_marginStart="40dp"/>
 
